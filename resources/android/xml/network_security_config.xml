@@ -2,6 +2,6 @@
 <network-security-config>
     <base-config cleartextTrafficPermitted="true" />
     <domain-config cleartextTrafficPermitted="true">
-        <domain includeSubdomains="true">localhost</domain>
+        <domain includeSubdomains="true">http://192.168.1.111:8000</domain>
     </domain-config>
 </network-security-config>

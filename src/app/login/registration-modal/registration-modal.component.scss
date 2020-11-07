@@ -1,0 +1,49 @@
+@import '../../../theme/variables';
+
+$color-border: #e1e1e1;
+
+.val-input {
+  --background: #fff;
+  margin-bottom: 8px;
+  border: 1px solid $color-border;
+  border-radius: 5px;
+
+  &.no-margin {
+    margin-bottom: 0;
+  }
+
+  ion-label {
+    opacity: 0.5;
+  }
+
+  &.item-has-focus {
+    ion-label {
+      opacity: 1;
+    }
+  }
+
+  &.ios {
+    ion-label {
+      opacity: 1;
+    }
+
+    &.item-has-focus {
+      ion-label {
+        color: var(--ion-color-primary);
+      }
+    }
+  }
+}
+
+.small {
+  font-size: $font-body-small;
+
+  &.terms {
+    text-align: center;
+    margin-top: 24px;
+  }
+
+  &.password-rules {
+    margin: 4px 0 8px;
+  }
+}
