@@ -1,0 +1,57 @@
+{
+  "title": "Impostazioni",
+  "general": {
+    "head": "Generali",
+    "language": {
+      "head": "Lingua",
+      "header": "Scegli la lingua",
+      "it": "Italiano",
+      "en": "English",
+      "msg-change": "La lingua sarà cambiata al prossimo riavvio."
+    }
+  },
+  "account": {
+    "head": "Account",
+    "register": "Accedi o registrati",
+    "btn-confirm": "Conferma",
+    "updateSuccess": "Modifica avvenuta con successo",
+    "changeEmail": {
+      "head": "Modifica email",
+      "phEmail": "Email",
+      "missingEmail": "Devi inserire il nuovo indirizzo email"
+    },
+    "changePassword": {
+      "head": "Modifica password",
+      "oldPassword": "Vecchia password",
+      "newPassword": "Nuova password",
+      "confirmNewPassword": "Conferma nuova password",
+      "missingInfo": "Devi compilare tutti i campi"
+    },
+    "changeInfo": {
+      "head": "Modifica informazioni personali",
+      "name": "Nome",
+      "surname": "Cognome",
+      "city": "Città",
+      "year": "Anno di nascita",
+      "gender": "Sesso",
+      "missingInfo": "Nome e cognome sono obbligatori"
+    },
+    "logout": {
+      "head": "Logout",
+      "msg": "Sei sicuro di voler fare logout?",
+      "btn-confirm": "Conferma",
+      "btn-cancel": "Annulla"
+    },
+    "delete": {
+      "head": "Elimina account",
+      "msg": "Sei sicuro di voler eliminare il tuo account? Questa operazione è irreversibile.",
+      "btn-delete": "Elimina",
+      "btn-cancel": "Annulla"
+    }
+  },
+  "info": {
+    "head": "Info",
+    "version": "Versione",
+    "contact-us": "Contattaci"
+  }
+}

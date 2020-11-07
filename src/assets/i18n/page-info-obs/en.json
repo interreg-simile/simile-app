@@ -1,0 +1,106 @@
+{
+  "err-get": "Error while recovering the information.",
+  "yes": "Yes",
+  "no": "No",
+  "view": "Visualize",
+  "position": {
+    "head": "Position",
+    "label-coordinates": "Coordinates",
+    "label-crs": "CRS",
+    "label-accuracy": "Accuracy"
+  },
+  "weather": {
+    "head": "Weather conditions",
+    "label-temperature": "Temperature",
+    "label-sky": "Sky",
+    "label-wind": "Wind"
+  },
+  "details": {
+    "head": "Details",
+    "algae": {
+      "head": "Algae",
+      "label-extension": "EXtension",
+      "label-colour": "Colour",
+      "value-iridescent": "Iridescent",
+      "label-look": "Aspect"
+    },
+    "foams": {
+      "head": "Foams",
+      "label-extension": "Extension",
+      "label-look": "Aspect",
+      "label-height": "Height"
+    },
+    "oils": {
+      "head": "Oil stains",
+      "label-extension": "Extension",
+      "label-type": "Type"
+    },
+    "litters": {
+      "head": "Litters",
+      "label-quantity": "Quantity",
+      "label-type": "Type"
+    },
+    "odours": {
+      "head": "Odours",
+      "label-intensity": "Intensity",
+      "label-origin": "Origin"
+    },
+    "outlets": {
+      "head": "Drains",
+      "label-in-place": "Active",
+      "label-terminal": "Terminal",
+      "label-colour": "Colour",
+      "label-vapour": "Vapour",
+      "label-signage": "Signage",
+      "label-signage-photo": "Signage photo",
+      "label-prod-activities": "Productive activity nearby",
+      "label-prod-activities-details": "Details on productive activity"
+    },
+    "fauna": {
+      "head": "Fauna",
+      "label-number": "Number",
+      "label-deceased": "Deceased",
+      "label-abnormal": "Abnormal behaviours",
+      "label-alien": "Alien species",
+      "fish": "Fishes",
+      "birds": "Birds",
+      "molluscs": "Clams",
+      "crustaceans": "Shellfishes",
+      "turtles": "Turtles"
+    }
+  },
+  "measures": {
+    "head": "Measures",
+    "transparency": {
+      "head": "Transparency",
+      "label-value": "Value"
+    },
+    "temperature": {
+      "head": "Temperature",
+      "label-depth": "Depth",
+      "label-value": "Value"
+    },
+    "ph": {
+      "head": "pH",
+      "label-depth": "Depth",
+      "label-value": "Value"
+    },
+    "oxygen": {
+      "head": "Oxygen",
+      "label-depth": "Depth",
+      "label-value": "Value"
+    },
+    "bacteria": {
+      "head": "Bacteria",
+      "label-eColi": "Escherichia Coli",
+      "label-enterococci": "Enterococci"
+    },
+    "instrument": {
+      "head": "Instrument",
+      "label-type": "Type",
+      "label-precision": "Precision",
+      "label-details": "Details"
+    }
+  },
+  "other": "Other information"
+}

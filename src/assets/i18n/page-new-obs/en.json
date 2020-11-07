@@ -1,0 +1,300 @@
+{
+  "close": {
+    "msg": "Discard the changes already made?",
+    "btn-continue": "Continue to edit",
+    "btn-cancel": "Cancel"
+  },
+  "title": "New observation",
+  "info-mandatory": "* indicate a mandatory field",
+  "location": {
+    "title": "Place *",
+    "not-recognized": "Position not recognized",
+    "msg-missing-address": "You have to spacify the name of the place."
+  },
+  "weather": {
+    "title": "Weather",
+    "temperature": "Temperature",
+    "temperature-head": "Specify the temperature in °C",
+    "temperature-ph": "Temperature in °C",
+    "sky": {
+      "title": "Sky",
+      "1": "Clear sky",
+      "2": "Few clouds",
+      "3": "Cloudy",
+      "4": "Rain",
+      "5": "Snow",
+      "6": "Fog"
+    },
+    "wind": "Wind",
+    "wind-head": "Specify wind speed in m/s",
+    "wind-ph": "Wind speed in m/s",
+    "err": "Error getting weather data."
+  },
+  "details": {
+    "title": "Details",
+    "algae": {
+      "title": "Algae",
+      "extension": {
+        "head": "Extension",
+        "1": "< 5 sq. m",
+        "2": "5 - 20 sq. m",
+        "3": "> 20 sq. m"
+      },
+      "colour": {
+        "head": "Colour",
+        "iridescent": "Iridescent"
+      },
+      "look": {
+        "head": "Aspect",
+        "1": "Scattered",
+        "2": "Compact",
+        "3": "Grouped",
+        "4": "Surface stripes"
+      }
+    },
+    "foams": {
+      "title": "Foams",
+      "extension": {
+        "head": "Extension",
+        "1": "< 5 sq. m",
+        "2": "5 - 20 sq. m",
+        "3": "> 20 sq. m"
+      },
+      "look": {
+        "head": "Aspect",
+        "1": "Scattered",
+        "2": "Compact",
+        "3": "Linear"
+      },
+      "height": {
+        "head": "Height",
+        "1": "< 3 cm",
+        "2": "3 - 20 cm",
+        "3": "> 20 cm"
+      }
+    },
+    "oils": {
+      "title": "Oil stains",
+      "extension": {
+        "head": "Extension",
+        "1": "< 5 sq. m",
+        "2": "5 - 20 sq. m",
+        "3": "> 20 sq. m"
+      },
+      "type": {
+        "head": "Type",
+        "1": "On surface",
+        "2": "In depth"
+      }
+    },
+    "litters": {
+      "title": "Litters",
+      "quantity": {
+        "head": "Quantity",
+        "1": "1",
+        "2": "2 - 20",
+        "3": "> 20"
+      },
+      "type": {
+        "head": "Type",
+        "1": "Plastic",
+        "2": "Glass / Ceramic",
+        "3": "Metal",
+        "4": "Paper / Cardboard",
+        "5": "Textiles",
+        "6": "Rubber",
+        "7": "Treated wood",
+        "8": "Bricks",
+        "9": "Vegetal debris",
+        "10": "Decaying organic material"
+      }
+    },
+    "odours": {
+      "title": "Odours",
+      "intensity": {
+        "head": "Intensity",
+        "1": "Slight",
+        "2": "Medium",
+        "3": "Strong"
+      },
+      "origin": {
+        "head": "Origin",
+        "1": "Fish",
+        "2": "Mold",
+        "3": "Hydrocarbon",
+        "4": "Solvent",
+        "5": "Sewer",
+        "6": "Decaying material"
+      }
+    },
+    "outlets": {
+      "title": "Drains",
+      "inPlace": "Active",
+      "terminal": {
+        "head": "Terminal",
+        "1": "Visible",
+        "2": "Submerged"
+      },
+      "colour": {
+        "head": "Colour",
+        "1": "Red",
+        "2": "Blue",
+        "3": "Green",
+        "4": "Gray",
+        "5": "Brown",
+        "6": "Yellow",
+        "7": "White"
+      },
+      "vapour": "Vapour",
+      "signage": {
+        "head": "Signage",
+        "photo-add": "Add a photo",
+        "photo-edit": "Modify the photo"
+      },
+      "prod-act": {
+        "head": "Productive activity nearby",
+        "ph": "Details (max 250 characters)..."
+      }
+    },
+    "fauna": {
+      "title": "Fauna",
+      "fish": "Fishes",
+      "birds": "Birds",
+      "molluscs": "Clams",
+      "crustaceans": "Shellfishes",
+      "turtles": "Turtlees",
+      "deceased": {
+        "head": "Deceased",
+        "number": "Number",
+        "err-positive-number": "Insert a number bigger than 0."
+      },
+      "abnormal": {
+        "head": "Abnormal behaviours",
+        "ph": "Describe the behaviours..."
+      },
+      "alien": {
+        "head": "Alien species",
+        "fish": {
+          "1": "Stone moroko"
+        },
+        "birds": {
+          "1": "Egyptian goose",
+          "2": "African sacred ibis"
+        },
+        "molluscs": {
+          "1": "Corbicula fluminea",
+          "2": "Dreissena polymorpha",
+          "3": "Sinanodonta woodiana"
+        },
+        "crustaceans": {
+          "1": "Spinycheek crayfish",
+          "2": "Signal crayfish",
+          "3": "Louisiana crayfish"
+        },
+        "turtles": {
+          "1": "Pond slider"
+        }
+      }
+    }
+  },
+  "measures": {
+    "title": "Measures",
+    "add": "Add one or more measure",
+    "edit": "Modify your measures",
+    "hub": {
+      "title": "Your measures",
+      "head": "Type of measure"
+    },
+    "type": {
+      "head": "Type of measure",
+      "single": "Single",
+      "multiple": "Multiple"
+    },
+    "errors": {
+      "add-measure": "You must first complete the current measure.",
+      "remove-measure": "You can't delete the last measure."
+    },
+    "transparency": {
+      "title": "Trasparency",
+      "label-val": "Depth (m) *",
+      "label-instrument-precision": "Precision (m)",
+      "error-msg-val": "You have to specify the value of the measure."
+    },
+    "temperature": {
+      "title": "Temperature",
+      "label-depth": "Depth (m) *",
+      "label-val": "Value (°C) *",
+      "label-instrument-precision": "Precision (°C)",
+      "error-msg-val": "You have to specify the values of both measure and depth."
+    },
+    "ph": {
+      "title": "pH",
+      "label-depth": "Depth (m) *",
+      "label-val": "Value *",
+      "label-instrument-precision": "Precision",
+      "error-msg-val": "You have to specify the values of both measure and depth."
+    },
+    "oxygen": {
+      "title": "Oxygen",
+      "label-depth": "Depth (m) *",
+      "label-val": "Value (mg/l) *",
+      "label-val-percentage": "Value (%) *",
+      "label-instrument-precision": "Precision",
+      "error-msg-val": "You have to specify the values of both measure and depth."
+    },
+    "bacteria": {
+      "title": "Bacteria",
+      "eColi": "Escherichia Coli (UFC/100ml)",
+      "enterococci": "Enterococci (UFC/100ml)",
+      "error-msg-val": "You have to insert at least one of the two values."
+    },
+    "instrument": {
+      "head": "Instrument used",
+      "type": {
+        "label": "Type *",
+        "1": "Professional",
+        "2": "Artisanal",
+        "error-msg": "You have to specify the typology of the instrument used."
+      },
+      "details": {
+        "label": "Details",
+        "placeholder": "Brand, model, tolerance..."
+      }
+    }
+  },
+  "other": {
+    "title": "Other information",
+    "ph": "Max 500 characters..."
+  },
+  "photos": "Photo",
+  "photo-choice": {
+    "header": "Take photo from:",
+    "btn-camera": "Camera",
+    "btn-gallery": "Gallery",
+    "btn-close": "Close"
+  },
+  "btn-send": "Send the observation",
+  "or": "- or -",
+  "btn-call": "Contact the authorities",
+  "err-msg": "Error posting the observation, we are sorry for the inconvenience.",
+  "call-no-roi-msg": "It's not possible to contact the authorities because the point indicated is inside an area not supported by the application.",
+  "call-data-error": "Error contacting the authorities, we are sorry for the inconvenience. The observation has been inserted anyway.",
+  "msg-no-photo": "At least one photo is requested.",
+  "msg-weather-error": "Error getting weather data.",
+  "alert-message-cancel": "Discard the changes already made?",
+  "alert-btn-continue": "Continue to edit",
+  "alert-btn-cancel": "Cancel",
+  "modal-call": {
+    "first-text": {
+      "1": "To report a problem to the competent authorities, please call the following number:",
+      "2": "To report a problem to the competent authorities, please call the following number:",
+      "3": "To report a problem to the competent authorities, please open the following link:"
+    },
+    "second-text": {
+      "1": "<span class=\"bold-primary\">The operative room of Lombardy Region civil protection</span> will answer the call. Please communicate the following code so that they can identify the observation you just made:",
+      "2": "<span class=\"bold-primary\">The ???</span> will answer the call. Please communicate the following code so that they can identify the observation you just made:",
+      "3": "Click on the link <span class=\"bold-primary\">scrivici</span> under the phone contacts and fill the form inserting <span class=\"bold-primary\">SIMILE</span> as object and the following code as message:"
+    },
+    "btn-close": "Close"
+  }
+}
