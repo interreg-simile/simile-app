@@ -1,5 +1,7 @@
 {
   "name": "simile",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
