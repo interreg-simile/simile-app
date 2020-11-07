@@ -1,7 +1,7 @@
 {
-  "name": "simile",
+  "name": "simile-app",
   "version": "0.0.1",
-  "author": "Ionic Framework",
+  "author": "Edoardo Pessina <edoardopessina.priv@gmail.com>",
   "homepage": "https://ionicframework.com/",
   "scripts": {
     "ng": "ng",
@@ -9,7 +9,9 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "tslint:check": "tslint -c tslint.json 'src/**/*.{ts,tsx}'",
+    "stylelint:check": "stylelint \"src/**/*.scss\"",
+    "lint-all": "npm run tslint:check && npm run stylelint:check"
   },
   "private": true,
   "dependencies": {
@@ -28,15 +30,15 @@
     "zone.js": "~0.10.3"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.1000.0",
+    "@angular-devkit/build-angular": "^0.1002.0",
     "@angular/cli": "~10.0.5",
     "@angular/compiler": "~10.0.0",
     "@angular/compiler-cli": "~10.0.0",
     "@angular/language-service": "~10.0.0",
     "@ionic/angular-toolkit": "^2.3.0",
-    "@types/node": "^12.11.1",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
+    "@types/node": "^12.11.1",
     "codelyzer": "^6.0.0",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~5.0.0",
@@ -46,9 +48,13 @@
     "karma-jasmine": "~3.3.0",
     "karma-jasmine-html-reporter": "^1.5.0",
     "protractor": "~7.0.0",
+    "stylelint": "^13.7.2",
+    "stylelint-config-recommended-scss": "^4.2.0",
+    "stylelint-order": "^4.1.0",
+    "stylelint-scss": "^3.18.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript": "~3.9.5"
   },
-  "description": "An Ionic project"
+  "description": "SIMILE mobile application"
 }
