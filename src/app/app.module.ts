@@ -20,10 +20,11 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import {environment} from '../environments/environment';
 import {interceptorProviders} from './shared/interceptors/interceptors';
+import {PhotoViewerComponent} from './shared/photo-viewer/photo-viewer.component';
 
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
+  declarations: [AppComponent, PhotoViewerComponent],
+  entryComponents: [PhotoViewerComponent],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),

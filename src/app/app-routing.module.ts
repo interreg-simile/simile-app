@@ -4,9 +4,10 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import {AuthGuard} from './shared/auth.guard';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/project', pathMatch: 'full'},
+  {path: '', redirectTo: '/glossary', pathMatch: 'full'},
   {path: 'login', loadChildren: './login/login.module#LoginPageModule'},
-  {path: 'project', loadChildren: './project/project.module#ProjectPageModule', canActivate: [AuthGuard]},
+  {path: 'project', loadChildren: './project/project.module#ProjectPageModule'},
+  {path: 'glossary', loadChildren: './glossary/glossary.module#GlossaryPageModule', canActivate: [AuthGuard]},
 ];
 
 @NgModule({
