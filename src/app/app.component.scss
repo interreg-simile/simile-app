@@ -1,1 +1,31 @@
-/* keep */
+@import '../theme/mixins';
+@import '../theme/variables';
+
+$avatar-size: 48px;
+
+.container {
+  @include flex-center();
+
+  @include icon();
+  width: 100%;
+
+  ion-avatar {
+    @include flex-static($avatar-size);
+    height: $avatar-size;
+  }
+
+  .username {
+    font-size: $font-title;
+    font-weight: 500;
+    flex: 1;
+  }
+}
+
+.active-link {
+  --background: rgba(var(--ion-color-primary-rgb), 0.1);
+  --color: var(--ion-color-primary);
+
+  ion-icon {
+    color: var(--ion-color-primary);
+  }
+}

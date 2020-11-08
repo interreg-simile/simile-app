@@ -10,6 +10,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import {IonicStorageModule} from '@ionic/storage';
 import {Network} from '@ionic-native/network/ngx';
+import {InAppBrowser} from '@ionic-native/in-app-browser/ngx'
 
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {IModuleTranslationOptions, ModuleTranslateLoader} from '@larscom/ngx-translate-module-loader';
@@ -18,6 +19,7 @@ import {LoggerModule, NgxLoggerLevel} from 'ngx-logger';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import {environment} from '../environments/environment';
+import {interceptorProviders} from './shared/interceptors/interceptors';
 
 @NgModule({
   declarations: [AppComponent],
@@ -48,7 +50,9 @@ import {environment} from '../environments/environment';
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    Network
+    Network,
+    InAppBrowser,
+    interceptorProviders
   ],
   bootstrap: [AppComponent]
 })
