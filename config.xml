@@ -1,10 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.polimi.simile" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.polimi.simile" version="0.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>SIMILE - Monitoriaggio Laghi</name>
     <description>Mobile application for crowdsourcing monitoring of lakes.</description>
     <author email="interreg-simile@polimi.it">Edoardo Pessina @ Politecnico di Milano</author>
     <content src="index.html" />
     <access origin="*" />
+    <access launch-external="true" origin="mailto:*" />
     <allow-navigation href="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -65,6 +66,7 @@
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
+        <allow-navigation href="mailto:*" launch-external="yes" />
         <icon height="57" src="resources/ios/icon/icon.png" width="57" />
         <icon height="114" src="resources/ios/icon/icon@2x.png" width="114" />
         <icon height="29" src="resources/ios/icon/icon-small.png" width="29" />
@@ -95,6 +97,7 @@
         <icon height="172" src="resources/ios/icon/icon-86@2x.png" width="172" />
         <icon height="196" src="resources/ios/icon/icon-98@2x.png" width="196" />
         <icon height="1024" src="resources/ios/icon/icon-1024.png" width="1024" />
+        <icon height="216" src="resources/ios/icon/icon-108@2x.png" width="216" />
         <splash height="480" src="resources/ios/splash/Default~iphone.png" width="320" />
         <splash height="960" src="resources/ios/splash/Default@2x~iphone.png" width="640" />
         <splash height="1024" src="resources/ios/splash/Default-Portrait~ipad.png" width="768" />
@@ -110,7 +113,6 @@
         <splash height="2208" src="resources/ios/splash/Default-736h.png" width="1242" />
         <splash height="2436" src="resources/ios/splash/Default-2436h.png" width="1125" />
         <splash height="2732" src="resources/ios/splash/Default@2x~universal~anyany.png" width="2732" />
-        <icon height="216" src="resources/ios/icon/icon-108@2x.png" width="216" />
         <splash height="2688" src="resources/ios/splash/Default-2688h~iphone.png" width="1242" />
         <splash height="1242" src="resources/ios/splash/Default-Landscape-2688h~iphone.png" width="2688" />
         <splash height="1792" src="resources/ios/splash/Default-1792h~iphone.png" width="828" />

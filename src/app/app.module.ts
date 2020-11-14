@@ -11,6 +11,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import {IonicStorageModule} from '@ionic/storage';
 import {Network} from '@ionic-native/network/ngx';
 import {InAppBrowser} from '@ionic-native/in-app-browser/ngx'
+import {AppVersion} from '@ionic-native/app-version/ngx';
 
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {IModuleTranslationOptions, ModuleTranslateLoader} from '@larscom/ngx-translate-module-loader';
@@ -53,7 +54,8 @@ import {PhotoViewerComponent} from './shared/photo-viewer/photo-viewer.component
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     Network,
     InAppBrowser,
-    interceptorProviders
+    interceptorProviders,
+    AppVersion
   ],
   bootstrap: [AppComponent]
 })
