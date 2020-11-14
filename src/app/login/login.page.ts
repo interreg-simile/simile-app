@@ -73,7 +73,7 @@ export class LoginPage {
     }
 
     await loading.dismiss();
-    await this.navController.navigateRoot('/settings');
+    await this.navController.navigateRoot('/news');
   }
 
   async onForgotPasswordClick(): Promise<void> {
@@ -116,6 +116,6 @@ export class LoginPage {
     }
 
     await loading.dismiss();
-    await this.navController.navigateRoot('/settings');
+    await this.navController.navigateRoot('/news');
   }
 }

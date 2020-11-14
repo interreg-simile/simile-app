@@ -1,0 +1,35 @@
+@import '../../../theme/variables';
+@import '../../../theme/mixins';
+
+ion-item {
+  --background: #{$off-white};
+
+  .container {
+    display: flex;
+
+    .content {
+      display: flex;
+      flex-direction: column;
+
+      .date {
+        font-size: $font-body-small;
+        line-height: 1;
+        color: $text-secondary;
+        padding-bottom: 8px;
+      }
+
+      .title {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+
+        span {
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          display: table-cell;
+          overflow: hidden;
+        }
+      }
+    }
+  }
+}
