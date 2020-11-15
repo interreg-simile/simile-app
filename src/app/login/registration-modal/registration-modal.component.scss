@@ -14,6 +14,24 @@ $color-border: #e1e1e1;
 
   ion-label {
     opacity: 0.5;
+
+    &.flex-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      opacity: 1;
+
+      .name {
+        color: #000;
+        flex: 1;
+        opacity: 0.5;
+      }
+
+      .choice {
+        color: #000;
+        opacity: 1;
+      }
+    }
   }
 
   &.item-has-focus {
@@ -25,6 +43,10 @@ $color-border: #e1e1e1;
   &.ios {
     ion-label {
       opacity: 1;
+
+      .name {
+        opacity: 1;
+      }
     }
 
     &.item-has-focus {

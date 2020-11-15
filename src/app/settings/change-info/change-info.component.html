@@ -45,15 +45,11 @@
 		></ion-input>
 	</ion-item>
 
-	<ion-item class="val-input" lines="none">
-		<ion-label position="floating">{{
-			"page-settings.account.changeInfo.gender" | translate
-		}}</ion-label>
-		<ion-input
-			readonly
-			(ionFocus)="openGenderPicker()"
-			[value]="shownGender"
-		></ion-input>
+	<ion-item lines="none" class="val-input" (click)="openGenderPicker()">
+		<ion-label class="flex-label">
+			<p class="name">{{"page-auth.modalRegister.phGender" | translate}}</p>
+			<p class="choice">{{shownGender}}</p>
+		</ion-label>
 	</ion-item>
 
 	<ion-button
