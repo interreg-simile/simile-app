@@ -7,8 +7,8 @@
 		<ion-title>{{"page-news.title" | translate}}</ion-title>
 	</ion-toolbar>
 
-	<ion-segment (ionChange)="onSegmentChange($event)">
-		<ion-segment-button value="{{ segmentsEnum.EVENTS }}" checked="true">
+	<ion-segment (ionChange)="onSegmentChange($event)" value="{{ segmentsEnum.EVENTS }}">
+		<ion-segment-button value="{{ segmentsEnum.EVENTS }}">
 			<section>
 				<ion-label>{{"page-news.segment-events" | translate}}</ion-label>
 

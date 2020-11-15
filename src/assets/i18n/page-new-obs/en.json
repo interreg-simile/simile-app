@@ -9,7 +9,7 @@
   "location": {
     "title": "Place *",
     "not-recognized": "Position not recognized",
-    "msg-missing-address": "You have to spacify the name of the place."
+    "msg-missing-address": "You have to specify the name of the place."
   },
   "weather": {
     "title": "Weather",
@@ -158,11 +158,11 @@
     },
     "fauna": {
       "title": "Fauna",
-      "fish": "Fishes",
+      "fish": "Fish",
       "birds": "Birds",
       "molluscs": "Clams",
       "crustaceans": "Shellfishes",
-      "turtles": "Turtlees",
+      "turtles": "Turtles",
       "deceased": {
         "head": "Deceased",
         "number": "Number",

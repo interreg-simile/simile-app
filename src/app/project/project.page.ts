@@ -17,7 +17,7 @@ export class ProjectPage {
     projectLinks.forEach((l) => l.addEventListener('click', () => this.onLinkClick(this.projectUrl)));
   }
 
-  onLinkClick(url): void {
+  onLinkClick(url: string) {
     this.inAppBrowser.create(url, '_system', 'location=yes')
   }
 }
