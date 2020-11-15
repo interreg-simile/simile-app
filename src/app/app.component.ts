@@ -8,6 +8,7 @@ import {Router} from '@angular/router';
 import {LangService} from './shared/lang.service';
 import {Duration, ToastService} from './shared/toast.service';
 import {NetworkService} from './shared/network.service';
+import {FileService} from './shared/file.service';
 
 export const statusBarColor = '#00515F';
 export const projectEmail = 'interreg-simile@polimi.it';
@@ -36,6 +37,7 @@ export class AppComponent {
     private toastService: ToastService,
     private router: Router,
     private networkService: NetworkService,
+    private fileService: FileService
   ) {
     this.initializeApp().then(() => {
       this.onBackButton();
@@ -51,6 +53,13 @@ export class AppComponent {
 
     this.statusBar.backgroundColorByHexString(statusBarColor);
     this.statusBar.styleLightContent();
+
+    await this.fileService
+      .createImageDir()
+      .catch((err) =>
+        this.logger.error('Error initializing the images directory', err)
+      );
+    this.logger.debug('Images directory initialized')
 
     await this.langService
       .initAppLanguage()

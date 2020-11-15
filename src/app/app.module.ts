@@ -12,6 +12,10 @@ import {IonicStorageModule} from '@ionic/storage';
 import {Network} from '@ionic-native/network/ngx';
 import {InAppBrowser} from '@ionic-native/in-app-browser/ngx'
 import {AppVersion} from '@ionic-native/app-version/ngx';
+import {Geolocation} from '@ionic-native/geolocation/ngx';
+import {Diagnostic} from '@ionic-native/diagnostic/ngx';
+import {Camera} from '@ionic-native/camera/ngx';
+import {File} from '@ionic-native/file/ngx';
 
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {IModuleTranslationOptions, ModuleTranslateLoader} from '@larscom/ngx-translate-module-loader';
@@ -22,10 +26,20 @@ import { AppRoutingModule } from './app-routing.module';
 import {environment} from '../environments/environment';
 import {interceptorProviders} from './shared/interceptors/interceptors';
 import {PhotoViewerComponent} from './shared/photo-viewer/photo-viewer.component';
+import {HelpPopoverComponent} from './shared/helps/help-popover/help-popover.component';
+import {HelpModalComponent} from './shared/helps/help-modal/help-modal.component';
 
 @NgModule({
-  declarations: [AppComponent, PhotoViewerComponent],
-  entryComponents: [PhotoViewerComponent],
+  declarations: [
+    AppComponent,
+    PhotoViewerComponent,
+    HelpModalComponent,
+    HelpPopoverComponent],
+  entryComponents: [
+    PhotoViewerComponent,
+    HelpModalComponent,
+    HelpPopoverComponent
+  ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
@@ -49,13 +63,17 @@ import {PhotoViewerComponent} from './shared/photo-viewer/photo-viewer.component
     }),
   ],
   providers: [
+    AppVersion,
+    Network,
     StatusBar,
     SplashScreen,
+    Geolocation,
+    Diagnostic,
+    Camera,
+    File,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    Network,
     InAppBrowser,
-    interceptorProviders,
-    AppVersion
+    interceptorProviders
   ],
   bootstrap: [AppComponent]
 })

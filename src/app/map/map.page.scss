@@ -1,0 +1,32 @@
+$fab-size: 56px;
+$fab-min-size: 40px;
+$fab-top: 8px;
+$fab-bottom: 36px;
+$fab-distance: 16px;
+
+.icon-notification-on {
+  color: #ffd01e;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+}
+
+ion-fab[vertical='top'] {
+  &.fab-secondary {
+    top: $fab-top + $fab-min-size + $fab-distance;
+  }
+}
+
+ion-fab[vertical='bottom'] {
+  bottom: $fab-bottom;
+
+  &.fab-secondary {
+    bottom: $fab-bottom + $fab-size + $fab-distance;
+  }
+}
+
+.follow {
+  --ion-color-contrast: #3e86e8 !important;
+}
