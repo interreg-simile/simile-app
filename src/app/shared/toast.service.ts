@@ -9,16 +9,13 @@ export enum Duration {
 
 @Injectable({providedIn: 'root'})
 export class ToastService {
-  constructor(
-    private toastCtr: ToastController,
-    private i18n: TranslateService
-  ) {
-  }
+  constructor(private toastCtr: ToastController, private i18n: TranslateService) { }
 
   async presentToast(msg: string, duration: Duration): Promise<void> {
     const toast = await this.toastCtr.create({
       message: this.i18n.instant(msg),
       duration,
+      color: 'dark',
     });
 
     await toast.present();
