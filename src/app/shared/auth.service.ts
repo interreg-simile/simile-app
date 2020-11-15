@@ -27,8 +27,6 @@ export class AuthService {
     this.isGuest = await this.storage.get(this._storageKeyGuest);
     this.token = await this.storage.get(this._storageKeyToken);
     this.userId = await this.storage.get(this._storageKeyUserId);
-
-    console.log(this.isGuest, this.token, this.userId);
   }
 
   isUserAuthenticated() {

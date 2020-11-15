@@ -122,7 +122,6 @@ export class AppComponent {
             this._lastTimeBackPress = new Date().getTime();
           }
         } else if (outlet && outlet.canGoBack()) {
-          console.log(outlet);
           outlet.pop();
         }
       });

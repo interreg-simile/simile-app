@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {ModalController} from '@ionic/angular';
+import {InAppBrowser} from '@ionic-native/in-app-browser/ngx';
+
 import {TermModalComponent} from './term-modal/term-modal.component';
 
 @Component({
@@ -17,7 +19,7 @@ export class GlossaryPage implements OnInit {
 
   alphabeticalOrderTerms = (a, b) => a.value.term.localeCompare(b.value.term);
 
-  constructor(private i18n: TranslateService, private modalCtr: ModalController) { }
+  constructor(private i18n: TranslateService, private modalCtr: ModalController, private inAppBrowser: InAppBrowser) { }
 
   ngOnInit(): void {
     this.isLoading = true;
@@ -54,5 +56,9 @@ export class GlossaryPage implements OnInit {
     });
 
     await modal.present();
+  }
+
+  onLinkClick(url: string) {
+    this.inAppBrowser.create(url, '_system', 'location=yes')
   }
 }

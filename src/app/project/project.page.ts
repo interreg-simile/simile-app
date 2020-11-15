@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import {InAppBrowser} from '@ionic-native/in-app-browser/ngx';
 
 @Component({
   selector: 'app-project',

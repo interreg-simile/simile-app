@@ -19,8 +19,7 @@ export class ChangeEmailComponent {
     private loadingCtr: LoadingController,
     private toastService: ToastService,
     private userService: UserService
-  ) {
-  }
+  ) { }
 
   async onConfirmClick(): Promise<void> {
     const loading = await this.loadingCtr.create({

@@ -28,8 +28,6 @@ export class HelpPopoverComponent implements OnInit {
   ionViewDidEnter(): void {
     const links = document.getElementsByClassName('link');
 
-    console.log(links)
-
     for (let i = 0; i < links.length; i++) {
       const ref = links[i].getAttribute('href');
 

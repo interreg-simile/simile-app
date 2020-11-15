@@ -55,8 +55,6 @@ export class AlgaeComponent implements OnInit {
       this.obsService.newObservation.details.algae.look.code = this._props.look;
     }
 
-    console.log(this.obsService.newObservation);
-
     await this.modalCtr.dismiss();
   }
 
