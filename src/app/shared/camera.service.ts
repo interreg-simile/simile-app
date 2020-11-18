@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Camera, CameraOptions} from '@ionic-native/camera/ngx';
+import {NGXLogger} from 'ngx-logger';
 
 export enum PicResult {
   NO_IMAGE,
@@ -20,7 +21,7 @@ export class CameraService {
     correctOrientation: true,
   };
 
-  constructor(private camera: Camera) { }
+  constructor(private camera: Camera, private logger: NGXLogger) { }
 
   async takePicture(fromGallery: boolean = false): Promise<string | PicResult> {
     const opts = {
@@ -36,6 +37,7 @@ export class CameraService {
       .catch((e) => [undefined, e]);
 
     if (err !== undefined) {
+      this.logger.error('Error taking picture', err)
       return err === 'No Image Selected' ? PicResult.NO_IMAGE : PicResult.ERROR;
     }
 

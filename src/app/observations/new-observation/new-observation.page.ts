@@ -1,6 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ActionSheetController, AlertController, LoadingController, ModalController, NavController,
-  PickerController, Platform, PopoverController} from '@ionic/angular';
+import {
+  ActionSheetController, AlertController, LoadingController, ModalController, NavController,
+  PickerController, Platform, PopoverController
+} from '@ionic/angular';
 import {TranslateService} from '@ngx-translate/core';
 import {Router} from '@angular/router';
 import {NGXLogger} from 'ngx-logger';
@@ -62,7 +64,8 @@ export class NewObservationPage implements OnInit, OnDestroy {
     public networkService: NetworkService,
     private popoverCrt: PopoverController,
     private actionSheetCtrl: ActionSheetController
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     if (!this.obsService.newObservation) {
@@ -227,7 +230,7 @@ export class NewObservationPage implements OnInit, OnDestroy {
     e.cancelBubble = true;
     e.stopPropagation();
 
-    if (!this._newObservation.measures.checked) {
+    if (!this.obsService.newObservation.measures || !this._newObservation.measures.checked) {
       await this.openMeasuresModal();
     } else {
       this._newObservation.measures.checked = false;
@@ -243,7 +246,6 @@ export class NewObservationPage implements OnInit, OnDestroy {
     await this.openMeasuresModal();
   }
 
-  /** Opens the measures hub. */
   async openMeasuresModal(): Promise<void> {
     if (!this.obsService.newObservation.measures) {
       this.obsService.newObservation.measures = new MeasuresImpl();
@@ -332,7 +334,6 @@ export class NewObservationPage implements OnInit, OnDestroy {
     );
   }
 
-  /** Fired when the user clicks on the send button. */
   async onSendClick(): Promise<void> {
     const loading = await this.loadingCtr.create({
       message: this.i18n.instant('common.wait'),

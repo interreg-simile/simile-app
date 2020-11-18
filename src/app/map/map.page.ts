@@ -103,7 +103,8 @@ export class MapPage implements OnInit {
     private popoverCtr: PopoverController,
     private events: Events,
     private networkService: NetworkService
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this._pauseSub = this.platform.pause.subscribe(() => {
@@ -141,9 +142,9 @@ export class MapPage implements OnInit {
     this.events.subscribe(
       'observation:inserted-offline',
       () => {
-      this.toastService.presentToast('page-map.msg-saved-offline', Duration.short);
-      this._customMarker = null;
-    });
+        this.toastService.presentToast('page-map.msg-saved-offline', Duration.short);
+        this._customMarker = null;
+      });
 
     this.initMarkerClusters();
 
@@ -632,9 +633,7 @@ export class MapPage implements OnInit {
   }
 
   async onAddClick(): Promise<void> {
-    if (
-      this.networkService.getCurrentNetworkStatus() === ConnectionStatus.Offline
-    ) {
+    if (this.networkService.getCurrentNetworkStatus() === ConnectionStatus.Offline) {
       const networkAlertChoice = await this.presentInsertionAlert(
         'page-map.msg-insert-offline'
       );
@@ -664,9 +663,7 @@ export class MapPage implements OnInit {
 
     this.obsService.newObservation = new Observation(pos, accuracy);
 
-    if (
-      this.networkService.getCurrentNetworkStatus() === ConnectionStatus.Online
-    ) {
+    if (this.networkService.getCurrentNetworkStatus() === ConnectionStatus.Online) {
       await this.presentLoading();
 
       const [roi, roiErr] = await this.mapService
@@ -736,7 +733,6 @@ export class MapPage implements OnInit {
     await this.loading.present();
   }
 
-  /** Dismisses the loading dialog. */
   private async dismissLoading(): Promise<void> {
     if (this.loading) {
       await this.loading.dismiss();
