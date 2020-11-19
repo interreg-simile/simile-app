@@ -49,14 +49,22 @@ export class SingleEventPage implements OnInit {
       .catch((err) => this.logger.error('Error saving the read event.', err));
   }
 
+  onEmailClick(email: string) {
+    this.inAppBrowser.create(`mailto:${email}`, '_system')
+  }
+
+  onTelClick(tel: string) {
+    this.inAppBrowser.create(`tel:${tel}`, '_system')
+  }
+
   onDirectionsClick(): void {
     const coords = `${this.event.coordinates.lat},${this.event.coordinates.lng}`;
     const label = encodeURI(this.event.title);
 
     if (this.platform.is('ios')) {
-      window.open(`maps://?q=${coords}_system`);
+      this.inAppBrowser.create(`maps://?q=${coords}`, '_system');
     } else {
-      window.open(`geo:0,0?q=${coords}(${label})_system`);
+      this.inAppBrowser.create(`geo:0,0?q=${coords}(${label})`, '_system');
     }
   }
 

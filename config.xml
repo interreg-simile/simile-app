@@ -10,9 +10,13 @@
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
+    <access origin="tel:*" launch-external="yes"/>
     <allow-intent href="mailto:*" />
+    <access origin="mailto:*" launch-external="yes"/>
     <allow-intent href="geo:*" />
+    <access origin="geo:*" launch-external="yes"/>
     <allow-intent href="maps:*" />
+    <access origin="maps:*" launch-external="yes"/>
     <preference name="ScrollEnabled" value="false" />
     <preference name="BackupWebStorage" value="none" />
     <preference name="SplashMaintainAspectRatio" value="true" />

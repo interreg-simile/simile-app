@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ModalController, NavParams} from '@ionic/angular';
 import {TranslateService} from '@ngx-translate/core';
+import {InAppBrowser} from '@ionic-native/in-app-browser/ngx';
+
 import {PhotoViewerComponent} from '../../shared/photo-viewer/photo-viewer.component';
 
 @Component({
@@ -20,9 +22,9 @@ export class TermModalComponent implements OnInit {
   constructor(
     private modalCtr: ModalController,
     private navParams: NavParams,
-    private i18n: TranslateService
-  ) {
-  }
+    private i18n: TranslateService,
+    private inAppBrowser: InAppBrowser
+  ) { }
 
   ngOnInit(): void {
     this._id = this.navParams.get('id');
@@ -51,6 +53,11 @@ export class TermModalComponent implements OnInit {
   }
 
   ionViewDidEnter(): void {
+    this.initTermLinks()
+    this.initSourceLinks()
+  }
+
+  initTermLinks() {
     const links = document.getElementsByClassName('link');
 
     for (let i = 0; i < links.length; i++) {
@@ -63,6 +70,24 @@ export class TermModalComponent implements OnInit {
         ev.cancelBubble = true;
 
         this.openLinkedTermModal(parseInt(ref));
+        return false;
+      });
+    }
+  }
+
+  initSourceLinks() {
+    const links = document.getElementsByClassName('source-link');
+
+    for (let i = 0; i < links.length; i++) {
+      const ref = links[i].getAttribute('href');
+
+      links[i].addEventListener('click', async (ev) => {
+        ev.preventDefault();
+        ev.stopPropagation();
+        ev.stopImmediatePropagation();
+        ev.cancelBubble = true;
+
+        this.inAppBrowser.create(ref, '_system', 'location=yes')
         return false;
       });
     }

@@ -26,7 +26,7 @@
     "title": "Ciclo termico",
     "text": "Le fasi che caratterizzano un lago nel corso dell'anno per quanto riguarda la distribuzione della <a class='link' href='24'>temperatura</a> e di altri parametri (es. <a class='link' href='18'>ossigeno</a>) lungo la colonna d'acqua. Se si misura la temperatura di un lago dalla superficie al fondo si ottengono, nel corso dell'anno, profili differenti: in alcuni periodi la colonna d'acqua ha la stessa temperatura dalla superficie al fondo (<a class='link' href='6'>circolazione</a>) mentre in altri vi è un elevato gradiente termico (<a class='link' href='22'>stratificazione</a>). I laghi si possono classificare in base al loro ciclo termico in: monomittici, se presentano durante l'anno un'unica piena circolazione; dimittici, se circolano due volte nel corso dell'anno (primavera e autunno), oligomittici, se la piena circolazione non si verifica tutti gli anni. Nei laghi meromittici, l'acqua di fondo non si mescola mai con l'acqua degli strati superficiali, solitamente a causa di un elevato accumulo di soluti nelle acque profonde.",
     "imgCount": "1",
-    "sources": "<a href='http://www.ise.cnr.it/crypta/limnol/energia/termica'>http://www.ise.cnr.it/crypta/limnol/energia/termica</a>"
+    "sources": "<a class='source-link' href='http://www.ise.cnr.it/crypta/limnol/energia/termica'>http://www.ise.cnr.it/crypta/limnol/energia/termica</a>"
   },
   "6": {
     "title": "Circolazione",
@@ -80,7 +80,7 @@
     "title": "Fotosintesi",
     "text": "La fotosintesi clorofilliana è un processo biochimico che porta alla costruzione di molecole di carboidrati, cioè di alimento, a partire da biossido di carbonio (CO2) e acqua in presenza di clorofilla, utilizzando energia luminosa e liberando ossigeno (O2). In un lago l'energia fornita dal sole è utilizzata dagli organismi produttori (alghe, piante acquatiche, batteri) per svolgere la fotosintesi. La materia così prodotta viene utilizzata dai consumatori primari (plancton animale e pesci fitofagi), e questi, a loro volta, sono utilizzati dai pesci carnivori e da altri organismi predatori (consumatori secondari). ",
     "imgCount": "1",
-    "sources": "<a href='http://www.ponzaracconta.it/wp-content/uploads/2014/02/fotosintesi-294x300.jpg'>http://www.ponzaracconta.it/wp-content/uploads/2014/02/fotosintesi-294x300.jpg</a>"
+    "sources": "<a class='source-link' href='http://www.ponzaracconta.it/wp-content/uploads/2014/02/fotosintesi-294x300.jpg'>http://www.ponzaracconta.it/wp-content/uploads/2014/02/fotosintesi-294x300.jpg</a>"
   },
   "16": {
     "title": "Limnologia",
@@ -131,13 +131,13 @@
     "title": "Zona afotica",
     "text": "La zona di un lago dove non penetra la luce. Coincide con le acque più profonde.",
     "imgCount": "1",
-    "sources": "<a href='http://www.ise.cnr.it/crypta/limnol/zone/zonelago'>http://www.ise.cnr.it/crypta/limnol/zone/zonelago</a>"
+    "sources": "<a class='source-link' href='http://www.ise.cnr.it/crypta/limnol/zone/zonelago'>http://www.ise.cnr.it/crypta/limnol/zone/zonelago</a>"
   },
   "26": {
     "title": "Zona eufotica",
     "text": "La zona che normalmente va dalla superficie di un lago fino a 20 metri di profondità, dove la luce riesce a penetrare e dove vivono gli organismi vegetali che svolgono la <a class='link' href='15'>fotosintesi</a>. Le acque più profonde, completamente al buio, costituiscono la <a class='link' href='25'>zona afotica</a> (senza luce).",
     "imgCount": "1",
-    "sources": "<a href='http://www.ise.cnr.it/crypta/limnol/zone/zonelago'>http://www.ise.cnr.it/crypta/limnol/zone/zonelago</a>"
+    "sources": "<a class='source-link' href='http://www.ise.cnr.it/crypta/limnol/zone/zonelago'>http://www.ise.cnr.it/crypta/limnol/zone/zonelago</a>"
   },
   "27": {
     "title": "Zooplancton",

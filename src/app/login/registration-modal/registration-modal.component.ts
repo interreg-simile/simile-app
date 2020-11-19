@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {AlertController, LoadingController, ModalController, Platform} from '@ionic/angular';
 import {TranslateService} from '@ngx-translate/core';
+import {InAppBrowser} from '@ionic-native/in-app-browser/ngx';
 
 import {Duration, ToastService} from '../../shared/toast.service';
 import {AuthService} from '../../shared/auth.service';
@@ -11,7 +12,7 @@ import {NetworkService} from '../../shared/network.service';
   templateUrl: './registration-modal.component.html',
   styleUrls: ['./registration-modal.component.scss'],
 })
-export class RegistrationModalComponent implements OnInit {
+export class RegistrationModalComponent {
   public email: string;
   public password: string;
   public confirmPassword: string;
@@ -28,6 +29,8 @@ export class RegistrationModalComponent implements OnInit {
     other: this.i18n.instant('page-auth.modalRegister.other'),
   };
 
+  private urlGdpr = ''
+
   constructor(
     private modalCtr: ModalController,
     public i18n: TranslateService,
@@ -36,12 +39,9 @@ export class RegistrationModalComponent implements OnInit {
     private authService: AuthService,
     private alertCrt: AlertController,
     private networkService: NetworkService,
-    public platform: Platform
-  ) {
-  }
-
-  ngOnInit() {
-  }
+    public platform: Platform,
+    private inAppBrowser: InAppBrowser
+  ) { }
 
   async openGenderPicker(): Promise<void> {
     const alert = await this.alertCrt.create({
@@ -166,6 +166,10 @@ export class RegistrationModalComponent implements OnInit {
       Duration.short
     );
     await this.closeModal();
+  }
+
+  onGdprLinkClick() {
+    this.inAppBrowser.create(this.urlGdpr, '_system', 'location=yes')
   }
 
   async closeModal(): Promise<void> {
