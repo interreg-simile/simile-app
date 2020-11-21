@@ -44,35 +44,33 @@ export class MapService {
 
   async checkPositionAvailability(fromClick = false): Promise<LocationErrors> {
     const authStatus = await this.diagnostic.getLocationAuthorizationStatus();
+    this.logger.debug('Position auth status', authStatus)
 
-    this.logger.log('Position auth status: ', authStatus)
+    if (authStatus === this.diagnostic.permissionStatus.DENIED_ALWAYS) {
+      this.logger.debug('Position auth always denied')
 
-    // If the permission is denied and cannot be asked
-    if (fromClick && authStatus === this.diagnostic.permissionStatus.DENIED_ALWAYS) {
-      await this.presetErrAlert(LocationErrors.AUTH_ERROR);
+      if (fromClick) { await this.presetErrAlert(LocationErrors.AUTH_ERROR) }
+
       return LocationErrors.AUTH_ERROR;
     }
 
-    // If the permission is denied, but can be asked
-    if (authStatus !== this.diagnostic.permissionStatus.GRANTED || authStatus !== this.diagnostic.permissionStatus.GRANTED_WHEN_IN_USE) {
-      const req = await this.diagnostic.requestLocationAuthorization();
+    if (authStatus !== this.diagnostic.permissionStatus.GRANTED && authStatus !== this.diagnostic.permissionStatus.GRANTED_WHEN_IN_USE) {
+      this.logger.debug('Requesting position auth')
+      const authResponse = await this.diagnostic.requestLocationAuthorization();
+      this.logger.debug('Position auth requested', authResponse)
 
-      if (
-        req === this.diagnostic.permissionStatus.DENIED_ALWAYS ||
-        req === this.diagnostic.permissionStatus.DENIED_ONCE
-      ) {
+      if (authResponse !== this.diagnostic.permissionStatus.GRANTED ||
+        authResponse !== this.diagnostic.permissionStatus.GRANTED_WHEN_IN_USE) {
         return LocationErrors.AUTH_ERROR;
       }
     }
 
-    const gps = await this.diagnostic.isLocationEnabled();
+    const isLocationEnabled = await this.diagnostic.isLocationEnabled();
 
-    this.logger.log('GPS status: ', gps)
+    this.logger.debug('Location enabled status', isLocationEnabled)
 
-    if (!gps) {
-      if (fromClick) {
-        await this.presetErrAlert(LocationErrors.GPS_ERROR);
-      }
+    if (!isLocationEnabled) {
+      if (fromClick) { await this.presetErrAlert(LocationErrors.GPS_ERROR) }
       return LocationErrors.GPS_ERROR;
     }
 
@@ -80,10 +78,7 @@ export class MapService {
   }
 
   async presetErrAlert(errType: LocationErrors) {
-    const mKey =
-      errType === LocationErrors.AUTH_ERROR
-        ? 'page-map.alert-msg-auth'
-        : 'page-map.alert-msg-gps';
+    const mKey = errType === LocationErrors.AUTH_ERROR ? 'page-map.alert-msg-auth' : 'page-map.alert-msg-gps';
 
     const alert = await this.alertCtr.create({
       subHeader: this.i18n.instant(mKey),

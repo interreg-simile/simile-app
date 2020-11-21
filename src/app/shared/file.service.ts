@@ -98,7 +98,7 @@ export class FileService {
     return new Promise((resolve, reject) => {
       fileEntry.remove(
         () => {
-          this.logger.log(`File ${fileEntry.name} removed.`);
+          this.logger.debug(`File ${fileEntry.name} removed.`);
           resolve();
         },
         (err) => {

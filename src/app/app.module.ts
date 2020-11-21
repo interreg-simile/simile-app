@@ -54,9 +54,7 @@ import {HelpModalComponent} from './shared/helps/help-modal/help-modal.component
       },
     }),
     LoggerModule.forRoot({
-      level: !environment.production
-        ? NgxLoggerLevel.DEBUG
-        : NgxLoggerLevel.OFF,
+      level: !environment.production ? NgxLoggerLevel.DEBUG : NgxLoggerLevel.OFF,
       serverLogLevel: NgxLoggerLevel.OFF,
       enableSourceMaps: true,
       timestampFormat: 'short',

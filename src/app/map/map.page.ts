@@ -108,42 +108,20 @@ export class MapPage implements OnInit {
       );
     });
 
-    this.diagnostic.registerLocationStateChangeHandler((state) => {
-      if (
-        (this.platform.is('android') &&
-          state === this.diagnostic.locationMode.LOCATION_OFF) ||
-        (this.platform.is('ios') &&
-          state !== this.diagnostic.permissionStatus.GRANTED &&
-          state !== this.diagnostic.permissionStatus.GRANTED_WHEN_IN_USE)
-      ) {
-        this.stopWatcher();
-      } else {
-        this.startWatcher().catch((err) =>
-          this.logger.error('Error starting the watcher', err)
-        );
-      }
-    });
+    this.diagnostic.registerLocationStateChangeHandler(state => this.onLocationChange(state));
 
-    this.events.subscribe(
-      'popover:change',
-      (data) => this.onPopoverChange(data.marker, data.checked)
-    );
+    this.events.subscribe('popover:change', data => this.onPopoverChange(data.marker, data.checked));
 
-    this.events.subscribe(
-      'observation:inserted-online',
-      () => (this._customMarker = null)
-    );
+    this.events.subscribe('observation:inserted-online', () => (this._customMarker = null));
 
-    this.events.subscribe(
-      'observation:inserted-offline',
-      () => {
+    this.events.subscribe('observation:inserted-offline', () => {
         this.toastService.presentToast('page-map.msg-saved-offline', Duration.short);
         this._customMarker = null;
       });
 
     this.initMarkerClusters();
 
-    this._eventsSub = this.newsService.events.subscribe((events) => {
+    this._eventsSub = this.newsService.events.subscribe(events => {
       this._eventMarkers.clearLayers();
       events.forEach((e) => {
         if (e.coordinates) {
@@ -152,7 +130,7 @@ export class MapPage implements OnInit {
       });
     });
 
-    this._obsSub = this.obsService.observations.subscribe((obs) => {
+    this._obsSub = this.obsService.observations.subscribe(obs => {
       this._obsMarkers.clearLayers();
       this._userObsMarkers.clearLayers();
       obs.forEach((o) => {
@@ -165,23 +143,39 @@ export class MapPage implements OnInit {
       });
     });
 
-    this._newEventsSub = this.newsService.areNewEvents.subscribe(
-      (v) => (this._areNewEvents = v)
-    );
-    this._newAlertsSub = this.newsService.areNewAlerts.subscribe(
-      (v) => (this._areNewAlerts = v)
-    );
+    this._newEventsSub = this.newsService.areNewEvents.subscribe(v => (this._areNewEvents = v));
+    this._newAlertsSub = this.newsService.areNewAlerts.subscribe(v => (this._areNewAlerts = v));
   }
 
   ionViewDidEnter() {
-    this.initMap().then(() => {
-      if (this._isAppOffline && this._restoreOfflineBasemap) {
-        this.setOfflineBasemap();
-      }
-      this.startWatcher()
-        .catch(err => this.logger.error('Error starting watcher for the first time', err));
-      this.subscribeNetworkChanges();
-    });
+    this.initMap()
+      .then(() => {
+        if (this._isAppOffline && this._restoreOfflineBasemap) {
+          this.setOfflineBasemap();
+        }
+
+        this.startWatcher()
+          .catch(err => this.logger.error('Error starting watcher for the first time', err));
+
+        this.subscribeNetworkChanges();
+      });
+  }
+
+  private onLocationChange(state) {
+    this.logger.debug('Location state changed', state)
+
+    const androidOffCondition = this.platform.is('android') && state === this.diagnostic.locationMode.LOCATION_OFF
+    const iosOffCondition = this.platform.is('ios') &&
+      state !== this.diagnostic.permissionStatus.GRANTED &&
+      state !== this.diagnostic.permissionStatus.GRANTED_WHEN_IN_USE
+
+    if (androidOffCondition || iosOffCondition) {
+      this.stopWatcher();
+      return
+    }
+
+    this.startWatcher()
+      .catch(err => this.logger.error('Error starting the watcher', err));
   }
 
   private subscribeNetworkChanges() {
@@ -198,12 +192,10 @@ export class MapPage implements OnInit {
         if (status === ConnectionStatus.Online) {
           this.setOnlineBasemap();
           this.handleMapData().finally(() => this.changeRef.detectChanges());
-        } else {
-          this.toastService.presentToast(
-            'common.errors.offline',
-            Duration.short
-          );
+          return;
         }
+
+        this.toastService.presentToast('common.errors.offline', Duration.short);
       });
   }
 
@@ -264,7 +256,7 @@ export class MapPage implements OnInit {
       }
     }
 
-    this._map = new Map('map', {zoomControl: false});
+    this._map = new Map('map', {zoomControl: false, tap: true});
 
     this._map.setView(this._savedMapCenter, this._savedZoomLevel);
 
@@ -299,25 +291,37 @@ export class MapPage implements OnInit {
     // Fired when the user taps on the map for more than one second
     this._map.on('contextmenu', (ev: LeafletMouseEvent) => {
       if (!this._customMarker) {
-        this._customMarker = new Marker(ev.latlng, {
-          icon: customMarkerIcon(),
-        }).addTo(this._map);
+        this._customMarker = new Marker(ev.latlng, {icon: customMarkerIcon()}).addTo(this._map);
       } else {
         this._customMarker.setLatLng(ev.latlng);
       }
 
       this._map.panTo(ev.latlng);
-
       this._isMapFollowing = false;
     });
 
-    this._map.on('click', () => {
+    this._map.on('click', (ev: LeafletMouseEvent) => {
+      if (this.platform.is('ios') && / OS 13_/.test(navigator.userAgent)) {
+        this.logger.debug('iOS 13 detected, changing map click behaviour')
+
+        if (!this._customMarker) {
+          this._customMarker = new Marker(ev.latlng, {icon: customMarkerIcon()}).addTo(this._map);
+          this._map.panTo(ev.latlng);
+          this._isMapFollowing = false;
+          return;
+        }
+
+        this._map.removeLayer(this._customMarker);
+        this._customMarker = null;
+
+        return
+      }
+
       if (!this._customMarker) {
         return;
       }
 
       this._map.removeLayer(this._customMarker);
-
       this._customMarker = null;
     });
   }
@@ -330,9 +334,7 @@ export class MapPage implements OnInit {
     this._locationStatus = await this.mapService.checkPositionAvailability(fromClick);
     this.changeRef.detectChanges();
 
-    if (this._locationStatus !== LocationErrors.NO_ERROR) {
-      return;
-    }
+    if (this._locationStatus !== LocationErrors.NO_ERROR) { return }
 
     this._isMapFollowing = true;
     this.changeRef.detectChanges();
@@ -364,9 +366,8 @@ export class MapPage implements OnInit {
     this._isMapFollowing = false;
     this.changeRef.detectChanges();
 
-    this.cachePosition().catch((err) =>
-      this.logger.error('Error caching the position.', err)
-    );
+    this.cachePosition()
+      .catch(err => this.logger.error('Error caching the position.', err));
   }
 
   private onPositionReceived(data: any) {
@@ -459,10 +460,10 @@ export class MapPage implements OnInit {
       this._customMarker = null;
     }
 
+    this.logger.debug('GPS clicked. Location status', this._locationStatus)
+
     if (this._locationStatus !== LocationErrors.NO_ERROR) {
-      this.startWatcher(true).catch((err) =>
-        this.logger.error('Error starting the position watcher.', err)
-      );
+      this.startWatcher(true).catch(err => this.logger.error('Error starting the position watcher.', err));
       return;
     }
 
@@ -509,7 +510,7 @@ export class MapPage implements OnInit {
     if (!this._hasFetchedData) {
       promises.push(
         this.populateMap()
-          .then(() => this.logger.log('Done populating map.'))
+          .then(() => this.logger.debug('Done populating map.'))
           .catch(() => this.logger.error('Error populating map.'))
           .finally(() => {
             this._hasFetchedData = true;
@@ -528,7 +529,7 @@ export class MapPage implements OnInit {
     promises.push(
       this.obsService
         .postStoredObservations()
-        .then(() => this.logger.log('Done posting stored observations.'))
+        .then(() => this.logger.debug('Done posting stored observations.'))
         .catch(() => this.logger.error('Error posting stored observations.'))
     );
 

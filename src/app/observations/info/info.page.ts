@@ -4,6 +4,7 @@ import {ModalController, NavController} from '@ionic/angular';
 import set from 'lodash-es/set';
 import get from 'lodash-es/get';
 import {TranslateService} from '@ngx-translate/core';
+import {NGXLogger} from 'ngx-logger';
 
 import {ObservationsService} from '../observations.service';
 import {Duration, ToastService} from '../../shared/toast.service';
@@ -32,16 +33,15 @@ export class InfoPage implements OnInit {
     private toastService: ToastService,
     public i18n: TranslateService,
     public domSanitizer: DomSanitizer,
-    public modalCtr: ModalController
+    public modalCtr: ModalController,
+    private logger: NGXLogger
   ) { }
 
   ngOnInit() {
     this._isLoading = true;
 
     const id = this.activatedRoute.snapshot.paramMap.get('id');
-    if (!id) {
-      this.navCtr.back();
-    }
+    if (!id) { this.navCtr.back() }
 
     this.obsService
       .getObservationById(id)
@@ -50,7 +50,7 @@ export class InfoPage implements OnInit {
         this._isLoading = false;
       })
       .catch((err) => {
-        console.error(err);
+        this.logger.error('Error retrieving the observation', err)
         this.toastService.presentToast('page-info-obs.err-get', Duration.short);
         this.navCtr.back();
       });

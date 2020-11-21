@@ -36,14 +36,14 @@ export class NetworkService {
   private initializeNetworkEvents(): void {
     this.network.onDisconnect().subscribe(() => {
       if (this.status.getValue() === ConnectionStatus.Online) {
-        this.logger.log('App offline.');
+        this.logger.debug('App offline.');
         this.status.next(ConnectionStatus.Offline);
       }
     });
 
     this.network.onConnect().subscribe(() => {
       if (this.status.getValue() === ConnectionStatus.Offline) {
-        this.logger.log('App online');
+        this.logger.debug('App online');
         this.status.next(ConnectionStatus.Online);
       }
     });

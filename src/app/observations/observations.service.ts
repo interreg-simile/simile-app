@@ -124,7 +124,7 @@ export class ObservationsService {
       pObs.push(
         this.sendObservation(obs)
           .then(() => {
-            this.logger.log('Observation correctly sent');
+            this.logger.debug('Observation correctly sent');
             this.removeStoredObservationImages(obs);
           })
           .catch((err) => {
