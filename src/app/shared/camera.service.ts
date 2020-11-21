@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Camera, CameraOptions} from '@ionic-native/camera/ngx';
 import {NGXLogger} from 'ngx-logger';
+import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
 
 export enum PicResult {
   NO_IMAGE,
@@ -21,7 +22,11 @@ export class CameraService {
     correctOrientation: true,
   };
 
-  constructor(private camera: Camera, private logger: NGXLogger) { }
+  constructor(
+    private camera: Camera,
+    private logger: NGXLogger,
+    private domSanitizer: DomSanitizer,
+  ) { }
 
   async takePicture(fromGallery: boolean = false): Promise<string | PicResult> {
     const opts = {
@@ -44,11 +49,9 @@ export class CameraService {
     return pic;
   }
 
-  getImgSrc(url: string): string {
-    if (!url) {
-      return;
-    }
+  getImgSrc(url: string): SafeUrl {
+    if (!url) { return }
 
-    return this._win.Ionic.WebView.convertFileSrc(url);
+    return this.domSanitizer.bypassSecurityTrustUrl(this._win.Ionic.WebView.convertFileSrc(url));
   }
 }

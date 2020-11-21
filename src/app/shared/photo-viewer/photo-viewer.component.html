@@ -24,7 +24,7 @@
 	<ion-slides [options]="slideOpts" zoom>
 		<ion-slide>
 			<div class="swiper-zoom-container img-container">
-				<img [src]="sanitizer.bypassSecurityTrustUrl(src)" alt="photo" />
+				<img [src]="safeSrc ? safeSrc : sanitizer.bypassSecurityTrustUrl(src)" alt="photo" />
 			</div>
 		</ion-slide>
 	</ion-slides>

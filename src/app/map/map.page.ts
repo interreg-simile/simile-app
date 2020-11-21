@@ -290,6 +290,11 @@ export class MapPage implements OnInit {
 
     // Fired when the user taps on the map for more than one second
     this._map.on('contextmenu', (ev: LeafletMouseEvent) => {
+      if (this.platform.is('ios')) {
+        this.logger.debug('iOS detected, changing map long click behaviour')
+        return;
+      }
+
       if (!this._customMarker) {
         this._customMarker = new Marker(ev.latlng, {icon: customMarkerIcon()}).addTo(this._map);
       } else {
@@ -301,8 +306,8 @@ export class MapPage implements OnInit {
     });
 
     this._map.on('click', (ev: LeafletMouseEvent) => {
-      if (this.platform.is('ios') && / OS 13_/.test(navigator.userAgent)) {
-        this.logger.debug('iOS 13 detected, changing map click behaviour')
+      if (this.platform.is('ios')) {
+        this.logger.debug('iOS detected, changing map click behaviour')
 
         if (!this._customMarker) {
           this._customMarker = new Marker(ev.latlng, {icon: customMarkerIcon()}).addTo(this._map);

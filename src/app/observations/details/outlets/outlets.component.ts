@@ -76,13 +76,13 @@ export class OutletsComponent implements OnInit {
     });
   }
 
-  async onSignagePhotoClick(): Promise<void> {
+  async onSignagePhotoClick() {
     if (this._props.signagePhoto) {
       const src = this.cameraService.getImgSrc(this._props.signagePhoto);
 
       const modal = await this.modalCtr.create({
         component: PhotoViewerComponent,
-        componentProps: {src, edit: true, delete: true},
+        componentProps: {safeSrc: src, edit: true, delete: true},
       });
 
       await modal.present();

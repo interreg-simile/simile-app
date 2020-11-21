@@ -19,6 +19,7 @@ import {HelpsService} from '../../shared/helps/helps.service';
 import {ConnectionStatus, NetworkService} from '../../shared/network.service';
 import {CallAuthoritiesComponent} from '../call-authorities/call-authorities.component';
 import {Events} from '../../shared/events.service';
+import {SafeUrl} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-new-observation',
@@ -42,7 +43,7 @@ export class NewObservationPage implements OnInit, OnDestroy {
     6: 'wi-windy',
   };
 
-  public _imageSrc: Array<string> = [undefined, undefined, undefined];
+  public _imageSrc: Array<SafeUrl> = [undefined, undefined, undefined];
 
   originalOrder = (a, b) => 0;
 
@@ -67,33 +68,23 @@ export class NewObservationPage implements OnInit, OnDestroy {
   ) {
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     if (!this.obsService.newObservation) {
       this.navCtr.navigateBack('/map');
       return;
     }
 
     this._newObservation = this.obsService.newObservation;
-    this._imageSrc[0] = this.cameraService.getImgSrc(
-      this._newObservation.photos[0]
-    );
+    this._imageSrc[0] = this.cameraService.getImgSrc(this._newObservation.photos[0]);
 
     this.getWeatherData(false)
-      .catch(() =>
-        this.toastService.presentToast(
-          'page-map.msg-weather-error',
-          Duration.short
-        )
-      )
+      .catch(() => this.toastService.presentToast('page-map.msg-weather-error', Duration.short))
       .finally(() => (this._isLoading = false));
 
-    this._backButtonSub = this.platform.backButton.subscribeWithPriority(
-      999,
-      () => this.onClose()
-    );
+    this._backButtonSub = this.platform.backButton.subscribeWithPriority(999, () => this.onClose());
   }
 
-  async getWeatherData(showErr: boolean): Promise<void> {
+  async getWeatherData(showErr: boolean) {
     if (
       this.networkService.getCurrentNetworkStatus() === ConnectionStatus.Offline
     ) {
@@ -121,7 +112,7 @@ export class NewObservationPage implements OnInit, OnDestroy {
     }
   }
 
-  async onRefreshWeatherClick(): Promise<void> {
+  async onRefreshWeatherClick() {
     if (!this.networkService.checkOnlineContentAvailability()) {
       return;
     }
@@ -133,7 +124,7 @@ export class NewObservationPage implements OnInit, OnDestroy {
     this._isWeatherLoading = false;
   }
 
-  async onWeatherClick(name: 'temperature' | 'wind'): Promise<void> {
+  async onWeatherClick(name: 'temperature' | 'wind') {
     const alert = await this.alertCtr.create({
       subHeader: this.i18n.instant(`page-new-obs.weather.${name}-head`),
       backdropDismiss: false,
@@ -161,7 +152,7 @@ export class NewObservationPage implements OnInit, OnDestroy {
     await alert.present();
   }
 
-  async onSkyClick(): Promise<void> {
+  async onSkyClick() {
     const getOpts = () => {
       const opts = [];
 
@@ -196,7 +187,7 @@ export class NewObservationPage implements OnInit, OnDestroy {
     await picker.present();
   }
 
-  async onDetailCheckboxClick(e: MouseEvent, detail: any): Promise<void> {
+  async onDetailCheckboxClick(e: MouseEvent, detail: any) {
     e.preventDefault();
     e.stopImmediatePropagation();
     e.cancelBubble = true;
@@ -209,7 +200,7 @@ export class NewObservationPage implements OnInit, OnDestroy {
     }
   }
 
-  async onDetailLabelClick(e: MouseEvent, component: any): Promise<void> {
+  async onDetailLabelClick(e: MouseEvent, component: any) {
     e.preventDefault();
     e.stopImmediatePropagation();
     e.cancelBubble = true;
@@ -218,13 +209,13 @@ export class NewObservationPage implements OnInit, OnDestroy {
     await this.openDetailModal(component);
   }
 
-  async openDetailModal(component: any): Promise<void> {
+  async openDetailModal(component: any) {
     const modal = await this.modalCtr.create({component});
 
     await modal.present();
   }
 
-  async onMeasuresCheckboxClick(e: MouseEvent): Promise<void> {
+  async onMeasuresCheckboxClick(e: MouseEvent) {
     e.preventDefault();
     e.stopImmediatePropagation();
     e.cancelBubble = true;
@@ -237,7 +228,7 @@ export class NewObservationPage implements OnInit, OnDestroy {
     }
   }
 
-  async onMeasuresLabelClick(e: MouseEvent): Promise<void> {
+  async onMeasuresLabelClick(e: MouseEvent) {
     e.preventDefault();
     e.stopImmediatePropagation();
     e.cancelBubble = true;
@@ -246,7 +237,7 @@ export class NewObservationPage implements OnInit, OnDestroy {
     await this.openMeasuresModal();
   }
 
-  async openMeasuresModal(): Promise<void> {
+  async openMeasuresModal() {
     if (!this.obsService.newObservation.measures) {
       this.obsService.newObservation.measures = new MeasuresImpl();
     }
@@ -257,7 +248,7 @@ export class NewObservationPage implements OnInit, OnDestroy {
     await measuresModal.present();
   }
 
-  async onThumbnailClick(src: string, idx: number): Promise<void> {
+  async onThumbnailClick(src: SafeUrl, idx: number) {
     if (!src) {
       await this.presentPhotoChoice(idx);
       return;
@@ -265,7 +256,7 @@ export class NewObservationPage implements OnInit, OnDestroy {
 
     const modal = await this.modalCtr.create({
       component: PhotoViewerComponent,
-      componentProps: {src, edit: true, delete: true},
+      componentProps: {safeSrc: src, edit: true, delete: true},
     });
 
     await modal.present();
@@ -284,7 +275,7 @@ export class NewObservationPage implements OnInit, OnDestroy {
     }
   }
 
-  async presentPhotoChoice(idx: number): Promise<void> {
+  async presentPhotoChoice(idx: number) {
     const actionSheet = await this.actionSheetCtrl.create({
       header: this.i18n.instant('page-new-obs.photo-choice.header'),
       buttons: [
@@ -312,29 +303,22 @@ export class NewObservationPage implements OnInit, OnDestroy {
     await actionSheet.present();
   }
 
-  async takePhoto(idx: number, fromGallery: boolean): Promise<void> {
+  async takePhoto(idx: number, fromGallery: boolean) {
     const pic = await this.cameraService.takePicture(fromGallery);
 
     if (pic === PicResult.ERROR) {
-      await this.toastService.presentToast(
-        'common.errors.photo',
-        Duration.short
-      );
+      await this.toastService.presentToast('common.errors.photo', Duration.short);
       return;
     }
 
-    if (pic === PicResult.NO_IMAGE || pic === undefined) {
-      return;
-    }
+    if (pic === PicResult.NO_IMAGE || pic === undefined) { return }
 
     this._newObservation.photos[idx] = pic;
 
-    this._imageSrc[idx] = this.cameraService.getImgSrc(
-      this._newObservation.photos[idx]
-    );
+    this._imageSrc[idx] = this.cameraService.getImgSrc(this._newObservation.photos[idx]);
   }
 
-  async onSendClick(): Promise<void> {
+  async onSendClick() {
     const loading = await this.loadingCtr.create({
       message: this.i18n.instant('common.wait'),
       showBackdrop: false,
@@ -367,7 +351,7 @@ export class NewObservationPage implements OnInit, OnDestroy {
     await this.router.navigate(['map']);
   }
 
-  async onCallAuthoritiesClick(): Promise<void> {
+  async onCallAuthoritiesClick() {
     if (
       this.networkService.getCurrentNetworkStatus() === ConnectionStatus.Offline
     ) {
@@ -439,7 +423,7 @@ export class NewObservationPage implements OnInit, OnDestroy {
     await this.router.navigate(['map']);
   }
 
-  async onClose(): Promise<void> {
+  async onClose() {
     try {
       const el = await this.popoverCrt.getTop();
       if (el) {
@@ -476,7 +460,7 @@ export class NewObservationPage implements OnInit, OnDestroy {
     await alert.present();
   }
 
-  ngOnDestroy(): void {
+  ngOnDestroy() {
     if (this._backButtonSub && !this._backButtonSub.closed) {
       this._backButtonSub.unsubscribe();
     }

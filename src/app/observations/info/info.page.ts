@@ -56,7 +56,7 @@ export class InfoPage implements OnInit {
       });
   }
 
-  onToggleClick(prop: string): void {
+  onToggleClick(prop: string) {
     if (prop === 'otherOpen') {
       this._obs.otherOpen = !this._obs.otherOpen;
       return;
@@ -71,7 +71,7 @@ export class InfoPage implements OnInit {
     return Object.keys(prop).some((k) => k !== 'checked');
   }
 
-  async onThumbnailClick(src: string): Promise<void> {
+  async onThumbnailClick(src: string) {
     const modal = await this.modalCtr.create({
       component: PhotoViewerComponent,
       componentProps: {src, edit: false, delete: false, download: true},

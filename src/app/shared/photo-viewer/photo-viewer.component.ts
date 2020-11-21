@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ModalController} from '@ionic/angular';
 import {StatusBar} from '@ionic-native/status-bar/ngx';
-import {DomSanitizer} from '@angular/platform-browser';
+import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
 import {NGXLogger} from 'ngx-logger';
 
 import {statusBarColor} from '../../app.component';
@@ -12,6 +12,7 @@ import {statusBarColor} from '../../app.component';
   styleUrls: ['./photo-viewer.component.scss'],
 })
 export class PhotoViewerComponent implements OnInit {
+  public safeSrc: SafeUrl;
   public src: string;
   public delete: boolean;
   public edit: boolean;
@@ -25,23 +26,23 @@ export class PhotoViewerComponent implements OnInit {
     public sanitizer: DomSanitizer
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.statusBar.backgroundColorByHexString('#000000');
   }
 
-  async onCLoseClick(): Promise<void> {
+  async onCLoseClick() {
     await this.dismiss();
   }
 
-  async onEditClick(): Promise<void> {
+  async onEditClick() {
     await this.dismiss({edit: true});
   }
 
-  async onDeleteClick(): Promise<void> {
+  async onDeleteClick() {
     await this.dismiss({delete: true});
   }
 
-  async dismiss(data?): Promise<void> {
+  async dismiss(data?) {
     this.statusBar.backgroundColorByHexString(statusBarColor);
 
     await this.modalCtrl.dismiss(data);

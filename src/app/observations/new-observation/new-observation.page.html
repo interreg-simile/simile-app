@@ -181,18 +181,13 @@
 			</div>
 
 			<div class="photos-container">
-				<div
-					*ngFor="let i of [0,1,2]"
-					class="photo"
-					(click)="onThumbnailClick(_imageSrc[i], i)"
-				>
+				<div *ngFor="let i of [0,1,2]"
+					 class="photo"
+					 (click)="onThumbnailClick(_imageSrc[i], i)">
 					<ion-thumbnail *ngIf="_imageSrc[i]">
 						<img [src]="_imageSrc[i]" alt="Photo" />
 					</ion-thumbnail>
-
-					<i *ngIf="_imageSrc[i] === undefined" class="material-icons"
-						>add_a_photo</i
-					>
+					<i *ngIf="_imageSrc[i] === undefined" class="material-icons">add_a_photo</i>
 				</div>
 			</div>
 		</section>
@@ -202,7 +197,6 @@
 			<!-- Send button -->
 			<ion-button expand="block" color="primary" (click)="onSendClick()">
 				<ion-icon slot="start" name="send"></ion-icon>
-
 				{{"page-new-obs.btn-send" | translate}}
 			</ion-button>
 
