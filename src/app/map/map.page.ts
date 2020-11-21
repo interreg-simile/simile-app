@@ -29,14 +29,10 @@ import {ConnectionStatus, NetworkService} from '../shared/network.service';
 export class MapPage implements OnInit {
   private readonly _storageKeyPosition = 'position';
 
-  private readonly _onlineUrlTemplate =
-    'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+  private readonly _onlineUrlTemplate = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
   private readonly _offlineUrlTemplate = 'assets/tiles/{z}/{x}/{y}.png';
 
-  private readonly _initialLatLon = new LatLng(
-    45.95388572325957,
-    8.958533937111497
-  );
+  private readonly _initialLatLon = new LatLng(45.95388572325957, 8.958533937111497);
 
   private readonly _initialZoomLvl = 9;
   private readonly _defaultZoomLvl = 16;
@@ -103,10 +99,9 @@ export class MapPage implements OnInit {
     private popoverCtr: PopoverController,
     private events: Events,
     private networkService: NetworkService
-  ) {
-  }
+  ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this._pauseSub = this.platform.pause.subscribe(() => {
       this.cachePosition().catch((err) =>
         this.logger.error('Error caching position', err)
@@ -178,13 +173,13 @@ export class MapPage implements OnInit {
     );
   }
 
-  ionViewDidEnter(): void {
+  ionViewDidEnter() {
     this.initMap().then(() => {
       if (this._isAppOffline && this._restoreOfflineBasemap) {
         this.setOfflineBasemap();
       }
-      this.startWatcher().catch(() => {
-      });
+      this.startWatcher()
+        .catch(err => this.logger.error('Error starting watcher for the first time', err));
       this.subscribeNetworkChanges();
     });
   }
@@ -212,7 +207,7 @@ export class MapPage implements OnInit {
       });
   }
 
-  private initMarkerClusters(): void {
+  private initMarkerClusters() {
     this._eventMarkers = new MarkerClusterGroup({
       iconCreateFunction: (cluster) => {
         const icon = this._eventMarkers._defaultIconCreateFunction(cluster);
@@ -256,7 +251,7 @@ export class MapPage implements OnInit {
     });
   }
 
-  private async initMap(): Promise<void> {
+  private async initMap() {
     if (!this._savedMapCenter) {
       const cachedCoords = (await this.storage.get(this._storageKeyPosition)) as Array<number>;
 
@@ -327,14 +322,12 @@ export class MapPage implements OnInit {
     });
   }
 
-  private async startWatcher(fromClick = false): Promise<void> {
+  private async startWatcher(fromClick = false) {
     if (this._positionSub) {
       return;
     }
 
-    this._locationStatus = await this.mapService.checkPositionAvailability(
-      fromClick
-    );
+    this._locationStatus = await this.mapService.checkPositionAvailability(fromClick);
     this.changeRef.detectChanges();
 
     if (this._locationStatus !== LocationErrors.NO_ERROR) {
@@ -349,7 +342,7 @@ export class MapPage implements OnInit {
       .subscribe((data) => this.onPositionReceived(data));
   }
 
-  private stopWatcher(): void {
+  private stopWatcher() {
     if (this._positionSub) {
       this._positionSub.unsubscribe();
       this._positionSub = null;
@@ -376,7 +369,7 @@ export class MapPage implements OnInit {
     );
   }
 
-  private onPositionReceived(data: any): void {
+  private onPositionReceived(data: any) {
     if (!data.coords) {
       this.logger.error(
         'Error form the data emitted by the position watcher.',
@@ -413,7 +406,7 @@ export class MapPage implements OnInit {
     }
   }
 
-  private createUserMarker(latLng: LatLng): void {
+  private createUserMarker(latLng: LatLng) {
     this._userMarker = new Marker(latLng, {
       icon: userMarkerIcon(),
       zIndexOffset: 3,
@@ -425,7 +418,7 @@ export class MapPage implements OnInit {
     }).addTo(this._map);
   }
 
-  onOfflineClick(): void {
+  onOfflineClick() {
     if (this._isOfflineBasemapActive) {
       this.setOnlineBasemap();
     } else {
@@ -433,7 +426,7 @@ export class MapPage implements OnInit {
     }
   }
 
-  private setOfflineBasemap(): void {
+  private setOfflineBasemap() {
     if (this._isOfflineBasemapActive && !this._restoreOfflineBasemap) {
       return;
     }
@@ -447,7 +440,7 @@ export class MapPage implements OnInit {
     this._restoreOfflineBasemap = true;
   }
 
-  private setOnlineBasemap(): void {
+  private setOnlineBasemap() {
     if (!this._isOfflineBasemapActive) {
       return;
     }
@@ -460,7 +453,7 @@ export class MapPage implements OnInit {
     this._restoreOfflineBasemap = false;
   }
 
-  onGPSClick(): void {
+  onGPSClick() {
     if (this._customMarker) {
       this._map.removeLayer(this._customMarker);
       this._customMarker = null;
@@ -488,7 +481,7 @@ export class MapPage implements OnInit {
     this._map.setZoom(this._defaultZoomLvl, {animate: true});
   }
 
-  async onSyncClick(): Promise<void> {
+  async onSyncClick() {
     if (!this.networkService.checkOnlineContentAvailability()) {
       return;
     }
@@ -584,7 +577,7 @@ export class MapPage implements OnInit {
     return false;
   }
 
-  async onLegendClick(e: MouseEvent): Promise<void> {
+  async onLegendClick(e: MouseEvent) {
     const popover = await this.popoverCtr.create({
       component: LegendComponent,
       componentProps: {
@@ -599,7 +592,7 @@ export class MapPage implements OnInit {
     await popover.present();
   }
 
-  private onPopoverChange(marker: Markers, checked: boolean): void {
+  private onPopoverChange(marker: Markers, checked: boolean) {
     switch (marker) {
       case Markers.USER_OBSERVATIONS:
         this.toggleMarkerCluster(this._userObsMarkers, checked);
@@ -615,10 +608,7 @@ export class MapPage implements OnInit {
     }
   }
 
-  private toggleMarkerCluster(
-    cluster: MarkerClusterGroup,
-    toShow: boolean
-  ): void {
+  private toggleMarkerCluster(cluster: MarkerClusterGroup, toShow: boolean) {
     const hasCluster = this._map.hasLayer(cluster);
 
     if (toShow && !hasCluster) {
@@ -632,7 +622,7 @@ export class MapPage implements OnInit {
     }
   }
 
-  async onAddClick(): Promise<void> {
+  async onAddClick() {
     if (this.networkService.getCurrentNetworkStatus() === ConnectionStatus.Offline) {
       const networkAlertChoice = await this.presentInsertionAlert(
         'page-map.msg-insert-offline'
@@ -724,7 +714,7 @@ export class MapPage implements OnInit {
     return (await alert.onDidDismiss()).role;
   }
 
-  private async presentLoading(): Promise<void> {
+  private async presentLoading() {
     this.loading = await this.loadingCtr.create({
       message: this.i18n.instant('common.wait'),
       showBackdrop: false,
@@ -733,7 +723,7 @@ export class MapPage implements OnInit {
     await this.loading.present();
   }
 
-  private async dismissLoading(): Promise<void> {
+  private async dismissLoading() {
     if (this.loading) {
       await this.loading.dismiss();
     }
@@ -741,7 +731,7 @@ export class MapPage implements OnInit {
     this.loading = null;
   }
 
-  private async cachePosition(): Promise<void> {
+  private async cachePosition() {
     if (this._coords) {
       await this.storage.set(this._storageKeyPosition, [
         this._coords.lat,
@@ -750,7 +740,7 @@ export class MapPage implements OnInit {
     }
   }
 
-  ionViewWillLeave(): void {
+  ionViewWillLeave() {
     this._savedMapCenter = this._map.getCenter();
     this._savedZoomLevel = this._map.getZoom();
 

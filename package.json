@@ -24,7 +24,7 @@
     "@ionic-native/app-version": "^5.29.0",
     "@ionic-native/camera": "^5.29.0",
     "@ionic-native/core": "^5.0.0",
-    "@ionic-native/diagnostic": "^5.29.0",
+    "@ionic-native/diagnostic": "^5.30.0",
     "@ionic-native/file": "^5.29.0",
     "@ionic-native/geolocation": "^5.29.0",
     "@ionic-native/in-app-browser": "^5.29.0",
@@ -103,13 +103,11 @@
       "cordova-plugin-inappbrowser": {},
       "cordova-plugin-app-version": {},
       "cordova-plugin-geolocation": {},
-      "cordova.plugins.diagnostic": {
-        "ANDROIDX_VERSION": "1.+"
-      },
       "cordova-plugin-file": {},
       "cordova-plugin-androidx-adapter": {},
       "cordova-plugin-camera": {},
-      "cordova-sqlite-storage": {}
+      "cordova-sqlite-storage": {},
+      "cordova.plugins.diagnostic": {}
     },
     "platforms": [
       "ios"

@@ -7,6 +7,7 @@ import {Observable} from 'rxjs';
 import {TranslateService} from '@ngx-translate/core';
 import {LatLng, Marker, MarkerOptions} from 'leaflet';
 import {Router} from '@angular/router';
+import {NGXLogger} from 'ngx-logger';
 
 import {LocationErrors} from '../shared/common.enum';
 import {environment} from '../../environments/environment';
@@ -26,6 +27,7 @@ export class MapService {
   };
 
   constructor(
+    private logger: NGXLogger,
     private http: HttpClient,
     private i18n: TranslateService,
     private geolocation: Geolocation,
@@ -43,20 +45,16 @@ export class MapService {
   async checkPositionAvailability(fromClick = false): Promise<LocationErrors> {
     const authStatus = await this.diagnostic.getLocationAuthorizationStatus();
 
+    this.logger.log('Position auth status: ', authStatus)
+
     // If the permission is denied and cannot be asked
-    if (
-      fromClick &&
-      authStatus === this.diagnostic.permissionStatus.DENIED_ALWAYS
-    ) {
+    if (fromClick && authStatus === this.diagnostic.permissionStatus.DENIED_ALWAYS) {
       await this.presetErrAlert(LocationErrors.AUTH_ERROR);
       return LocationErrors.AUTH_ERROR;
     }
 
     // If the permission is denied, but can be asked
-    if (
-      authStatus !== this.diagnostic.permissionStatus.GRANTED ||
-      authStatus !== this.diagnostic.permissionStatus.GRANTED_WHEN_IN_USE
-    ) {
+    if (authStatus !== this.diagnostic.permissionStatus.GRANTED || authStatus !== this.diagnostic.permissionStatus.GRANTED_WHEN_IN_USE) {
       const req = await this.diagnostic.requestLocationAuthorization();
 
       if (
@@ -69,6 +67,8 @@ export class MapService {
 
     const gps = await this.diagnostic.isLocationEnabled();
 
+    this.logger.log('GPS status: ', gps)
+
     if (!gps) {
       if (fromClick) {
         await this.presetErrAlert(LocationErrors.GPS_ERROR);
@@ -79,7 +79,7 @@ export class MapService {
     return LocationErrors.NO_ERROR;
   }
 
-  async presetErrAlert(errType: LocationErrors): Promise<void> {
+  async presetErrAlert(errType: LocationErrors) {
     const mKey =
       errType === LocationErrors.AUTH_ERROR
         ? 'page-map.alert-msg-auth'
@@ -145,7 +145,7 @@ export class MapService {
     return marker;
   }
 
-  private onMarkerClick(url: Array<string>): void {
+  private onMarkerClick(url: Array<string>) {
     if (this.networkService.checkOnlineContentAvailability()) {
       this.router.navigate(url);
     }
