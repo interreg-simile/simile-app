@@ -3,6 +3,7 @@ import {AppVersion} from '@ionic-native/app-version/ngx';
 import {AlertController, LoadingController, ModalController, NavController} from '@ionic/angular';
 import {TranslateService} from '@ngx-translate/core';
 import {NGXLogger} from 'ngx-logger';
+import {InAppBrowser} from '@ionic-native/in-app-browser/ngx';
 
 import {LangService} from '../shared/lang.service';
 import {projectEmail} from '../app.component';
@@ -35,7 +36,8 @@ export class SettingsPage implements OnInit {
     private userService: UserService,
     private toastService: ToastService,
     private alertCtr: AlertController,
-    private navController: NavController
+    private navController: NavController,
+    private inAppBrowser: InAppBrowser
   ) { }
 
   ngOnInit() {
@@ -245,6 +247,6 @@ export class SettingsPage implements OnInit {
   }
 
   onContactUsClick(): void {
-    window.open(`mailto:${projectEmail}`, '_system');
+    this.inAppBrowser.create(`mailto:${projectEmail}`, '_system')
   }
 }

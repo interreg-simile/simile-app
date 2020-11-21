@@ -35,7 +35,6 @@
     "@ionic/storage": "^2.3.1",
     "@larscom/ngx-translate-module-loader": "^2.1.1",
     "@ngx-translate/core": "^13.0.0",
-    "cordova-android": "9.0.0",
     "cordova-ios": "6.1.1",
     "leaflet": "^1.7.1",
     "leaflet.markercluster": "^1.4.1",
@@ -113,8 +112,7 @@
       "cordova-sqlite-storage": {}
     },
     "platforms": [
-      "ios",
-      "android"
+      "ios"
     ]
   }
 }
