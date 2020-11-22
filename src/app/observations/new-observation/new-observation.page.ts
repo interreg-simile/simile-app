@@ -20,6 +20,7 @@ import {ConnectionStatus, NetworkService} from '../../shared/network.service';
 import {CallAuthoritiesComponent} from '../call-authorities/call-authorities.component';
 import {Events} from '../../shared/events.service';
 import {SafeUrl} from '@angular/platform-browser';
+import {AuthService} from '../../shared/auth.service';
 
 @Component({
   selector: 'app-new-observation',
@@ -64,7 +65,8 @@ export class NewObservationPage implements OnInit, OnDestroy {
     public helpsService: HelpsService,
     public networkService: NetworkService,
     private popoverCrt: PopoverController,
-    private actionSheetCtrl: ActionSheetController
+    private actionSheetCtrl: ActionSheetController,
+    public authService: AuthService
   ) {
   }
 
@@ -352,21 +354,13 @@ export class NewObservationPage implements OnInit, OnDestroy {
   }
 
   async onCallAuthoritiesClick() {
-    if (
-      this.networkService.getCurrentNetworkStatus() === ConnectionStatus.Offline
-    ) {
-      await this.toastService.presentToast(
-        'common.errors.offline-function',
-        Duration.short
-      );
+    if (this.networkService.getCurrentNetworkStatus() === ConnectionStatus.Offline) {
+      await this.toastService.presentToast('common.errors.offline-function', Duration.short);
       return;
     }
 
     if (!this.obsService.newObservation.position.roi) {
-      await this.toastService.presentToast(
-        'page-new-obs.call-no-roi-msg',
-        Duration.short
-      );
+      await this.toastService.presentToast('page-new-obs.call-no-roi-msg', Duration.short);
       return;
     }
 
@@ -386,10 +380,7 @@ export class NewObservationPage implements OnInit, OnDestroy {
 
     if (err) {
       this.logger.error('Error posting the observation.', err);
-      await this.toastService.presentToast(
-        'page-new-obs.err-msg',
-        Duration.short
-      );
+      await this.toastService.presentToast('page-new-obs.err-msg', Duration.short);
       return;
     }
 
@@ -398,10 +389,7 @@ export class NewObservationPage implements OnInit, OnDestroy {
     const obs = res as MinimalObservation;
 
     if (!obs.position.roi || !obs.position.area || !obs.callId) {
-      await this.toastService.presentToast(
-        'page-new-obs.call-data-error',
-        Duration.short
-      );
+      await this.toastService.presentToast('page-new-obs.call-data-error', Duration.short);
       await this.router.navigate(['map']);
       return;
     }

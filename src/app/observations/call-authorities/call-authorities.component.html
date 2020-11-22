@@ -4,25 +4,18 @@
 	</p>
 
 	<div class="link" *ngIf="area !== 3">
-		<a [href]="'tel:' + contacts[area]">{{ contacts[area] }}</a>
+		<a (click)="onTelClick(contacts[area])">{{ contacts[area] }}</a>
 	</div>
 
 	<div class="link" *ngIf="area === 3">
-		<a href="https://www4.ti.ch/dt/da/spaas/sezione/"
-			>www4.ti.ch/dt/da/spaas/sezione/</a
-		>
+		<a (click)="onUrlClick(contacts[area])">{{ contacts[area] }}</a>
 	</div>
 
-	<p
-		class="ion-margin-top second-text"
-		[innerHTML]="'page-new-obs.modal-call.second-text.' + area | translate"
-	></p>
+	<p class="ion-margin-top second-text" [innerHTML]="'page-new-obs.modal-call.second-text.' + area | translate"></p>
 
 	<p class="code ion-margin-top">{{ callId }}</p>
 
 	<div class="close ion-margin-top">
-		<span (click)="onClose()">{{
-			"page-new-obs.modal-call.btn-close" | translate
-		}}</span>
+		<span (click)="onClose()">{{"page-new-obs.modal-call.btn-close" | translate}}</span>
 	</div>
 </section>
