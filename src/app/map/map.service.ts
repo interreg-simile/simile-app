@@ -59,7 +59,7 @@ export class MapService {
       const authResponse = await this.diagnostic.requestLocationAuthorization();
       this.logger.debug('Position auth requested', authResponse)
 
-      if (authResponse !== this.diagnostic.permissionStatus.GRANTED ||
+      if (authResponse !== this.diagnostic.permissionStatus.GRANTED &&
         authResponse !== this.diagnostic.permissionStatus.GRANTED_WHEN_IN_USE) {
         return LocationErrors.AUTH_ERROR;
       }
