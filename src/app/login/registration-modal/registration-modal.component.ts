@@ -29,7 +29,7 @@ export class RegistrationModalComponent {
     other: this.i18n.instant('page-auth.modalRegister.other'),
   };
 
-  private urlGdpr = ''
+  private urlGdpr = 'https://docs.google.com/document/d/1oEPA4PiVzFpCB4PKJTml2rKpAGvGNWWwa0Q4NsAPZQQ/edit?usp=sharing'
 
   constructor(
     private modalCtr: ModalController,
