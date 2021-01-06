@@ -45,7 +45,7 @@ export class ObservationsService {
   }
 
   async fetchObservations(): Promise<void> {
-    const url = `${environment.apiBaseUrl}/${environment.apiVersion}/observations`;
+    const url = `${environment.apiBaseUrl}/${environment.apiVersion}/observations/`;
 
     const qParams = new HttpParams()
       .set('minimalRes', 'true')
@@ -74,9 +74,7 @@ export class ObservationsService {
     return data;
   }
 
-  async getWeatherData(
-    coords: LatLng
-  ): Promise<{ sky: number; temperature: number; wind: number }> {
+  async getWeatherData(coords: LatLng): Promise<{ sky: number; temperature: number; wind: number }> {
     const url = `${environment.apiBaseUrl}/${environment.apiVersion}/misc/weather`;
 
     const qParams = new HttpParams()
@@ -93,9 +91,7 @@ export class ObservationsService {
   async postObservation(): Promise<'online' | 'offline'> {
     const cleanObs = this.cleanObservationFields();
 
-    if (
-      this.networkService.getCurrentNetworkStatus() === ConnectionStatus.Offline
-    ) {
+    if (this.networkService.getCurrentNetworkStatus() === ConnectionStatus.Offline) {
       await this.offlineService.storeObservation(cleanObs);
       return 'offline';
     } else {
@@ -197,13 +193,10 @@ export class ObservationsService {
     return obs;
   }
 
-  private async sendObservation(
-    obs: any,
-    generateCallId: boolean = false
-  ): Promise<MinimalObservation> {
+  private async sendObservation(obs: any, generateCallId: boolean = false): Promise<MinimalObservation> {
     const formData = await this.setRequestBody(obs);
 
-    const url = `${environment.apiBaseUrl}/${environment.apiVersion}/observations`;
+    const url = `${environment.apiBaseUrl}/${environment.apiVersion}/observations/`;
     const qParams = new HttpParams()
       .set('minimalRes', 'true')
       .set('callId', String(generateCallId));

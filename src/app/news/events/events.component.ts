@@ -4,7 +4,6 @@ import {Router} from '@angular/router';
 
 import {Event} from './event.model';
 import {NetworkService} from '../../shared/network.service';
-import {Alert} from '../alerts/alert.model';
 
 @Component({
   selector: 'app-events',
@@ -20,8 +19,7 @@ export class EventsComponent implements OnInit {
     private i18n: TranslateService,
     private networkService: NetworkService,
     private router: Router
-  ) {
-  }
+  ) { }
 
   ngOnInit(): void {
     this.locale = this.i18n.currentLang;

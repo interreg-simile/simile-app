@@ -32,9 +32,7 @@ export class OfflineService {
     const signagePhoto = get(data, 'details.outlets.signagePhoto');
 
     if (signagePhoto) {
-      const signagePhotoMovedUrl = await this.fileService.storeImage(
-        signagePhoto
-      );
+      const signagePhotoMovedUrl = await this.fileService.storeImage(signagePhoto);
       set(data, 'details.outlets.signagePhoto', signagePhotoMovedUrl);
     }
 

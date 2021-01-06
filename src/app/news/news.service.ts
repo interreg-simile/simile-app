@@ -40,7 +40,7 @@ export class NewsService {
   constructor(private http: HttpClient, private storage: Storage, private i18n: LangService) { }
 
   async fetchAlerts(): Promise<void> {
-    const url = `${environment.apiBaseUrl}/${environment.apiVersion}/alerts`;
+    const url = `${environment.apiBaseUrl}/${environment.apiVersion}/alerts/`;
 
     const qParams = new HttpParams()
       .set('includePast', 'false')
@@ -78,7 +78,7 @@ export class NewsService {
   }
 
   async fetchEvents(): Promise<void> {
-    const url = `${environment.apiBaseUrl}/${environment.apiVersion}/events`;
+    const url = `${environment.apiBaseUrl}/${environment.apiVersion}/events/`;
 
     const qParams = new HttpParams()
       .set('includePast', 'false')
@@ -97,12 +97,10 @@ export class NewsService {
       events.push({
         id: event._id,
         title: event.title[this.i18n.currLanguage] || event.title.it,
-        description:
-          event.description[this.i18n.currLanguage] || event.description.it,
+        description: event.description[this.i18n.currLanguage] || event.description.it,
         links: this.formatLinks(event.links),
         hasDetails: event.hasDetails,
-        coordinates:
-          event.position && event.position.coordinates.length > 0
+        coordinates: event.position && event.position.coordinates.length > 0
             ? new LatLng(event.position.coordinates[1], event.position.coordinates[0])
             : null,
         address: event.position ? event.position.address : null,

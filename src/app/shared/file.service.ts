@@ -8,11 +8,11 @@ export class FileService {
 
   constructor(private file: File, private logger: NGXLogger) { }
 
-  async createImageDir(): Promise<void> {
+  async createImageDir() {
     return this.createDirectory('images');
   }
 
-  private async createDirectory(dirName: string): Promise<void> {
+  private async createDirectory(dirName: string) {
     const doesExist = await this.checkDirExistence(dirName);
 
     if (!doesExist) {
@@ -61,11 +61,7 @@ export class FileService {
     });
   }
 
-  async appendImage(
-    formData: FormData,
-    url: string,
-    field: string
-  ): Promise<void> {
+  async appendImage(formData: FormData, url: string, field: string) {
     const entry = await this.file.resolveLocalFilesystemUrl(url);
     const fileEntry: FileEntry = entry as any;
 
@@ -92,7 +88,7 @@ export class FileService {
     });
   }
 
-  async removeImage(imgUrl: string): Promise<void> {
+  async removeImage(imgUrl: string) {
     const fileEntry = await this.file.resolveLocalFilesystemUrl(imgUrl);
 
     return new Promise((resolve, reject) => {
