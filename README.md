@@ -1,5 +1,5 @@
 <h4 align="center">
-<img src="https://raw.githubusercontent.com/interreg-simile/simile-app/master/docs/logo.png" width="150" alt="SIMILE">
+<img src="https://raw.githubusercontent.com/interreg-simile/simile-app/main/docs/logo.png?token=AFTO3XPKKZVC3RQXZ7VIWIK76XDLM" width="150" alt="SIMILE">
 </h4>
 
 # SIMILE - Monitoraggio Laghi
