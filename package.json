@@ -1,19 +1,16 @@
 {
   "name": "simile-app",
   "version": "2.0.0",
+  "description": "Mobile application for crowdsourcing monitoring of lakes.",
   "author": "Edoardo Pessina <edoardopessina.priv@gmail.com>",
-  "homepage": "https://ionicframework.com/",
+  "license": "SEE LICENSE IN LICENSE",
+  "private": true,
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
+    "dev": "ionic serve",
     "tslint:check": "tslint -c tslint.json 'src/**/*.{ts,tsx}'",
     "stylelint:check": "stylelint \"src/**/*.scss\"",
     "lint-all": "npm run tslint:check && npm run stylelint:check"
   },
-  "private": true,
   "dependencies": {
     "@angular/common": "~10.0.0",
     "@angular/core": "~10.0.0",
@@ -89,7 +86,6 @@
     "tslint": "~6.1.0",
     "typescript": "~3.9.5"
   },
-  "description": "SIMILE mobile application",
   "cordova": {
     "plugins": {
       "cordova-plugin-whitelist": {},
@@ -114,5 +110,13 @@
       "android",
       "ios"
     ]
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/interreg-simile/simile-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/interreg-simile/simile-app/issues"
+  },
+  "homepage": "https://github.com/interreg-simile/simile-app#readme"
 }
