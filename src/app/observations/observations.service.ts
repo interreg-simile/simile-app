@@ -199,7 +199,7 @@ export class ObservationsService {
     const url = `${environment.apiBaseUrl}/${environment.apiVersion}/observations/`;
     const qParams = new HttpParams()
       .set('minimalRes', 'true')
-      .set('callId', String(generateCallId));
+      .set('generateCallId', String(generateCallId));
 
     const res = await this.http
       .post<GenericApiResponse>(url, formData, {params: qParams})

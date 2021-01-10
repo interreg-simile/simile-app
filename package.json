@@ -7,6 +7,8 @@
   "private": true,
   "scripts": {
     "dev": "ionic serve",
+    "dev:android": "ionic cordova run android -l",
+    "run:android": "ionic cordova run android",
     "tslint:check": "tslint -c tslint.json 'src/**/*.{ts,tsx}'",
     "stylelint:check": "stylelint \"src/**/*.scss\"",
     "lint-all": "npm run tslint:check && npm run stylelint:check"
