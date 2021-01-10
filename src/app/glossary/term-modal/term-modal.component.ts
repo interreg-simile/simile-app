@@ -4,6 +4,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {InAppBrowser} from '@ionic-native/in-app-browser/ngx';
 
 import {PhotoViewerComponent} from '../../shared/photo-viewer/photo-viewer.component';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-term-modal',
@@ -23,7 +24,8 @@ export class TermModalComponent implements OnInit {
     private modalCtr: ModalController,
     private navParams: NavParams,
     private i18n: TranslateService,
-    private inAppBrowser: InAppBrowser
+    private inAppBrowser: InAppBrowser,
+    public sanitizer: DomSanitizer
   ) { }
 
   ngOnInit(): void {

@@ -71,7 +71,7 @@
         <splash density="port-xxxhdpi" src="resources/android/splash/drawable-port-xxxhdpi-screen.png" />
     </platform>
     <platform name="ios">
-        <preference name="deployment-target" value="12" />
+        <preference name="deployment-target" value="13" />
         <edit-config file="*-Info.plist" mode="merge" target="NSLocationWhenInUseUsageDescription">
             <string>We use your location to let you insert observations at your current position.</string>
         </edit-config>

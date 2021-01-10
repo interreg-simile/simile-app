@@ -16,7 +16,7 @@
 	<section *ngIf="_hasImages" class="images">
 		<ion-img
 			*ngFor="let url of _imagesUrl; index as i"
-			[src]="url"
+			[src]="sanitizer.bypassSecurityTrustUrl(url)"
 			alt="Image"
 			[className]="i < _imagesUrl.length - 1 ? 'margin' : ''"
 			(click)="onImgClick(url)"
