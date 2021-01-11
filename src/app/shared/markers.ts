@@ -42,10 +42,10 @@ export function observationMarkerIcon(): Icon {
   });
 }
 
-export function localObservationMarkerIcon(): Icon {
+export function eventMarkerIcon(): Icon {
   return new Icon({
-    iconUrl: 'assets/images/local-observation-marker.png',
-    iconRetinaUrl: 'assets/images/local-observation-marker-2x.png',
+    iconUrl: 'assets/images/event-marker.png',
+    iconRetinaUrl: 'assets/images/event-marker-2x.png',
     shadowUrl: 'leaflet/marker-shadow.png',
     iconSize: [25, 46],
     iconAnchor: [12.5, 46],
@@ -53,10 +53,10 @@ export function localObservationMarkerIcon(): Icon {
   });
 }
 
-export function eventMarkerIcon(): Icon {
+export function alertMarkerIcon(): Icon {
   return new Icon({
-    iconUrl: 'assets/images/event-marker.png',
-    iconRetinaUrl: 'assets/images/event-marker-2x.png',
+    iconUrl: 'assets/images/alert-marker.png',
+    iconRetinaUrl: 'assets/images/alert-marker-2x.png',
     shadowUrl: 'leaflet/marker-shadow.png',
     iconSize: [25, 46],
     iconAnchor: [12.5, 46],

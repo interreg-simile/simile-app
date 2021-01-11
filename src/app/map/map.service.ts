@@ -13,10 +13,11 @@ import {LocationErrors} from '../shared/common.enum';
 import {environment} from '../../environments/environment';
 import {GenericApiResponse} from '../shared/utils.interface';
 import {MinimalObservation} from '../observations/observations.service';
-import {eventMarkerIcon, observationMarkerIcon, userObservationMarkerIcon} from '../shared/markers';
+import {eventMarkerIcon, alertMarkerIcon, observationMarkerIcon, userObservationMarkerIcon} from '../shared/markers';
 import {NetworkService} from '../shared/network.service';
 import {Event} from '../news/events/event.model';
 import {AuthService} from '../shared/auth.service';
+import {Alert} from '../news/alerts/alert.model';
 
 @Injectable({providedIn: 'root'})
 export class MapService {
@@ -136,6 +137,17 @@ export class MapService {
     });
 
     marker.on('click', () => this.onMarkerClick(['news/events/', event.id]));
+
+    return marker;
+  }
+
+  createAlertMarker(alert: Alert): Marker {
+    const marker = new Marker(alert.coordinates, {
+      icon: alertMarkerIcon(),
+      zIndexOffset: 1,
+    });
+
+    marker.on('click', () => this.onMarkerClick(['news/alerts/', alert.id]));
 
     return marker;
   }

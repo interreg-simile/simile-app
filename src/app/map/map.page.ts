@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {AlertController, LoadingController, Platform, PopoverController} from '@ionic/angular';
 import {Circle, LatLng, LeafletMouseEvent, Map, Marker, TileLayer} from 'leaflet';
 import {MarkerClusterGroup} from 'leaflet.markercluster';
@@ -43,6 +43,7 @@ export class MapPage implements OnInit {
   private _pauseSub: Subscription;
   private _networkSub: Subscription;
   private _eventsSub: Subscription;
+  private _alertsSub: Subscription;
   private _obsSub: Subscription;
   private _newEventsSub: Subscription;
   private _newAlertsSub: Subscription;
@@ -75,6 +76,7 @@ export class MapPage implements OnInit {
   private _restoreOfflineBasemap = false;
 
   private _eventMarkers: MarkerClusterGroup;
+  private _alertMarkers: MarkerClusterGroup;
   private _obsMarkers: MarkerClusterGroup;
   private _userObsMarkers: MarkerClusterGroup;
 
@@ -126,6 +128,15 @@ export class MapPage implements OnInit {
       events.forEach((e) => {
         if (e.coordinates) {
           this.mapService.createEventMarker(e).addTo(this._eventMarkers);
+        }
+      });
+    });
+
+    this._alertsSub = this.newsService.alerts.subscribe(alerts => {
+      this._alertMarkers.clearLayers();
+      alerts.forEach((a) => {
+        if (a.coordinates) {
+          this.mapService.createAlertMarker(a).addTo(this._alertMarkers);
         }
       });
     });
@@ -214,6 +225,20 @@ export class MapPage implements OnInit {
       }
     });
 
+    this._alertMarkers = new MarkerClusterGroup({
+      iconCreateFunction: (cluster) => {
+        const icon = this._alertMarkers._defaultIconCreateFunction(cluster);
+        icon.options.className = 'marker-cluster marker-cluster-alerts';
+        return icon;
+      },
+    });
+
+    this._alertMarkers.on('clusterclick', () => {
+      if (this._isAppOffline) {
+        this.toastService.presentToast('common.errors.offline', Duration.short);
+      }
+    });
+
     this._obsMarkers = new MarkerClusterGroup({
       iconCreateFunction: (cluster) => {
         const icon = this._obsMarkers._defaultIconCreateFunction(cluster);
@@ -273,6 +298,7 @@ export class MapPage implements OnInit {
     }).addTo(this._map);
 
     this._eventMarkers.addTo(this._map);
+    this._alertMarkers.addTo(this._map);
     this._obsMarkers.addTo(this._map);
     this._userObsMarkers.addTo(this._map);
 
@@ -590,6 +616,7 @@ export class MapPage implements OnInit {
         hasUserObsMarkers: this._map.hasLayer(this._userObsMarkers),
         hasObsMarkers: this._map.hasLayer(this._obsMarkers),
         hasEventsMarkers: this._map.hasLayer(this._eventMarkers),
+        hasAlertsMarkers: this._map.hasLayer(this._alertMarkers),
       },
       event: e,
       showBackdrop: false,
@@ -610,6 +637,10 @@ export class MapPage implements OnInit {
 
       case Markers.EVENTS:
         this.toggleMarkerCluster(this._eventMarkers, checked);
+        break;
+
+      case Markers.ALERTS:
+        this.toggleMarkerCluster(this._alertMarkers, checked);
         break;
     }
   }

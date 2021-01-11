@@ -8,6 +8,7 @@ export enum Markers {
   USER_OBSERVATIONS,
   OTHER_OBSERVATIONS,
   EVENTS,
+  ALERTS
 }
 
 @Component({
@@ -23,8 +24,7 @@ export class LegendComponent {
     public navParams: NavParams,
     private events: Events,
     public authService: AuthService
-  ) {
-  }
+  ) { }
 
   onCheckboxChange(e: CustomEvent, markerType: Markers) {
     this.events.publish('popover:change', {

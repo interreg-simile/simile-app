@@ -6,18 +6,26 @@
   }
 }
 
-.marker-cluster-user-obs {
-  background-color: rgba(0, 167, 185, 0.6);
+.marker-cluster-alerts {
+  background-color: rgb(250, 212, 95);
 
   div {
-    background-color: rgba(0, 120, 136, 0.6);
+    background-color: rgb(241, 195, 55);
   }
 }
 
-.marker-cluster-obs {
+.marker-cluster-user-obs {
   background-color: rgba(255, 255, 255, 0.6);
 
   div {
     background-color: rgba(225, 225, 225, 0.6);
+  }
+}
+
+.marker-cluster-obs {
+  background-color: rgba(0, 167, 185, 0.6);
+
+  div {
+    background-color: rgba(0, 120, 136, 0.6);
   }
 }

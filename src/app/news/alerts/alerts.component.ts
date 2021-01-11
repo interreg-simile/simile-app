@@ -19,8 +19,7 @@ export class AlertsComponent implements OnInit {
     private i18n: TranslateService,
     private networkService: NetworkService,
     private router: Router
-  ) {
-  }
+  ) {}
 
   ngOnInit(): void {
     this.locale = this.i18n.currentLang;

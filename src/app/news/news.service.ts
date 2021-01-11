@@ -39,7 +39,7 @@ export class NewsService {
 
   constructor(private http: HttpClient, private storage: Storage, private i18n: LangService) { }
 
-  async fetchAlerts(): Promise<void> {
+  async fetchAlerts() {
     const url = `${environment.apiBaseUrl}/${environment.apiVersion}/alerts/`;
 
     const qParams = new HttpParams()
@@ -60,6 +60,9 @@ export class NewsService {
         id: alert._id,
         title: alert.title[this.i18n.currLanguage] || alert.title.it,
         content: alert.content[this.i18n.currLanguage] || alert.content.it,
+        coordinates: alert.position && alert.position.coordinates.length > 0
+          ? new LatLng(alert.position.coordinates[1], alert.position.coordinates[0])
+          : null,
         links: this.formatLinks(alert.links),
         dateEnd: alert.dateEnd,
         read: read.includes(alert._id),
@@ -77,7 +80,7 @@ export class NewsService {
     await this.checkNewAlerts();
   }
 
-  async fetchEvents(): Promise<void> {
+  async fetchEvents() {
     const url = `${environment.apiBaseUrl}/${environment.apiVersion}/events/`;
 
     const qParams = new HttpParams()
@@ -121,9 +124,7 @@ export class NewsService {
     await this.checkNewEvents();
   }
 
-  private formatLinks(
-    originalLinks?: Array<{ nameIta: string; nameEng: string; url: string }>
-  ): Array<Link> | null {
+  private formatLinks(originalLinks?: Array<{ nameIta: string; nameEng: string; url: string }>): Array<Link> | null {
     if (!originalLinks) {
       return null;
     }
@@ -144,7 +145,7 @@ export class NewsService {
     return this._events.getValue().find((e) => e.id === id);
   }
 
-  async saveData(key: string, id: string): Promise<void> {
+  async saveData(key: string, id: string) {
     const data = await this.storage.get(key) as string[];
 
     if (!data) {
@@ -157,7 +158,7 @@ export class NewsService {
     }
   }
 
-  private async cleanSavedData(key: string, ids: Array<string>): Promise<void> {
+  private async cleanSavedData(key: string, ids: Array<string>) {
     const data = await this.storage.get(key) as string[];
 
     if (!data) {
@@ -170,13 +171,13 @@ export class NewsService {
     );
   }
 
-  async checkNewAlerts(): Promise<void> {
+  async checkNewAlerts() {
     const areNew = this._alerts.getValue().some((e) => !e.read);
 
     this._newAlerts.next(areNew);
   }
 
-  async checkNewEvents(): Promise<void> {
+  async checkNewEvents() {
     const areNew = this._events.getValue().some((e) => !e.read);
 
     this._newEvents.next(areNew);

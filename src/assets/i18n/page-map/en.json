@@ -11,6 +11,7 @@
   "legend": {
     "user-obs": "My observations",
     "other-obs": "Observations",
-    "events": "Events"
+    "events": "Events",
+    "alerts": "Alerts"
   }
 }

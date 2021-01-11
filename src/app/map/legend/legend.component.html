@@ -8,9 +8,7 @@
 			class="ion-no-margin"
 		></ion-icon>
 
-		<ion-label class="ion-text-wrap">{{
-			"page-map.legend.user-obs" | translate
-		}}</ion-label>
+		<ion-label class="ion-text-wrap">{{"page-map.legend.user-obs" | translate}}</ion-label>
 
 		<ion-checkbox
 			slot="end"
@@ -28,9 +26,7 @@
 			class="ion-no-margin"
 		></ion-icon>
 
-		<ion-label class="ion-text-wrap">{{
-			"page-map.legend.other-obs" | translate
-		}}</ion-label>
+		<ion-label class="ion-text-wrap">{{"page-map.legend.other-obs" | translate}}</ion-label>
 
 		<ion-checkbox
 			slot="end"
@@ -54,6 +50,24 @@
 			slot="end"
 			[checked]="navParams.get('hasEventsMarkers')"
 			(ionChange)="onCheckboxChange($event, _markerEnum.EVENTS)"
+		></ion-checkbox>
+	</ion-item>
+
+	<!-- Alerts -->
+	<ion-item lines="none">
+		<ion-icon
+				src="assets/images/alert-marker.svg"
+				slot="start"
+				size="large"
+				class="ion-no-margin"
+		></ion-icon>
+
+		<ion-label>{{ "page-map.legend.alerts" | translate }}</ion-label>
+
+		<ion-checkbox
+				slot="end"
+				[checked]="navParams.get('hasAlertsMarkers')"
+				(ionChange)="onCheckboxChange($event, _markerEnum.ALERTS)"
 		></ion-checkbox>
 	</ion-item>
 </ion-list>
