@@ -8,6 +8,7 @@ import {Diagnostic} from '@ionic-native/diagnostic/ngx';
 import {NGXLogger} from 'ngx-logger';
 import {TranslateService} from '@ngx-translate/core';
 import {Router} from '@angular/router';
+import * as moment from 'moment';
 
 import {Events} from '../shared/events.service';
 import {MapService} from './map.service';
@@ -145,6 +146,10 @@ export class MapPage implements OnInit {
       this._obsMarkers.clearLayers();
       this._userObsMarkers.clearLayers();
       obs.forEach((o) => {
+        if (moment.utc(o.createdAt).isBefore(moment.utc().subtract(9, 'months'))) {
+          return
+        }
+
         const marker: Marker = this.mapService.createObservationMarker(o);
         if (marker.options['isPersonal']) {
           marker.addTo(this._userObsMarkers);

@@ -23,6 +23,7 @@ export interface MinimalObservation {
     roi?: string;
     area?: number;
   };
+  createdAt: string;
 }
 
 @Injectable({providedIn: 'root'})

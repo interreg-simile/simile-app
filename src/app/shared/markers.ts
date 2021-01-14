@@ -42,6 +42,17 @@ export function observationMarkerIcon(): Icon {
   });
 }
 
+export function fadedObservationMarkerIcon(): Icon {
+  return new Icon({
+    iconUrl: 'assets/images/faded-observation-marker.png',
+    iconRetinaUrl: 'assets/images/faded-observation-marker-2x.png',
+    shadowUrl: 'leaflet/marker-shadow.png',
+    iconSize: [25, 46],
+    iconAnchor: [12.5, 46],
+    shadowSize: [41, 41],
+  });
+}
+
 export function eventMarkerIcon(): Icon {
   return new Icon({
     iconUrl: 'assets/images/event-marker.png',

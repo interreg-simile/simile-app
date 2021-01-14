@@ -8,12 +8,13 @@ import {TranslateService} from '@ngx-translate/core';
 import {LatLng, Marker, MarkerOptions} from 'leaflet';
 import {Router} from '@angular/router';
 import {NGXLogger} from 'ngx-logger';
+import * as moment from 'moment';
 
 import {LocationErrors} from '../shared/common.enum';
 import {environment} from '../../environments/environment';
 import {GenericApiResponse} from '../shared/utils.interface';
 import {MinimalObservation} from '../observations/observations.service';
-import {eventMarkerIcon, alertMarkerIcon, observationMarkerIcon, userObservationMarkerIcon} from '../shared/markers';
+import {eventMarkerIcon, alertMarkerIcon, observationMarkerIcon, fadedObservationMarkerIcon, userObservationMarkerIcon} from '../shared/markers';
 import {NetworkService} from '../shared/network.service';
 import {Event} from '../news/events/event.model';
 import {AuthService} from '../shared/auth.service';
@@ -112,11 +113,16 @@ export class MapService {
 
     if (obs.uid && obs.uid === this.authService.userId) {
       markerOptions.icon = userObservationMarkerIcon();
-      markerOptions.zIndexOffset = 3;
+      markerOptions.zIndexOffset = 4;
       markerOptions['isPersonal'] = true;
     } else {
-      markerOptions.icon = observationMarkerIcon();
-      markerOptions.zIndexOffset = 2;
+      if (moment.utc(obs.createdAt).isBefore(moment.utc().subtract(1, 'months'))) {
+        markerOptions.icon = fadedObservationMarkerIcon();
+        markerOptions.zIndexOffset = 2;
+      } else {
+        markerOptions.icon = observationMarkerIcon();
+        markerOptions.zIndexOffset = 3;
+      }
       markerOptions['isPersonal'] = false;
     }
 
