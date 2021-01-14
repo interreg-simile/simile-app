@@ -1,5 +1,5 @@
 <h4 align="center">
-<img src="https://raw.githubusercontent.com/interreg-simile/simile-app/main/docs/logo.png?token=AFTO3XPKKZVC3RQXZ7VIWIK76XDLM" width="150" alt="SIMILE">
+<img src="https://raw.githubusercontent.com/interreg-simile/simile-app/main/media/logo.png?token=AFTO3XPKKZVC3RQXZ7VIWIK76XDLM" width="150" alt="SIMILE">
 </h4>
 
 # SIMILE - Monitoraggio Laghi
@@ -12,18 +12,8 @@ The project aims to improve the actual insubric lakes monitoring system and to c
 through an advanced informative system and citizen participation. The project is funded under the Interreg Italy-Switzerland Cooperation
 Program in order to develop strategies for the protection of lakes.
 
-
-## Table of Contents
-
-- [Installation](#installation)
-- [Development setup](#development-setup)
-- [Contributions](#contributions)
-- [License](#license)
-
-
-## Installation
-
-*Coming soon...*
+[![Get it on App Store](https://raw.githubusercontent.com/interreg-simile/simile-app/main/media/download_on_the_app_store_badge.svg)]()
+[![Get it on Google Play](https://raw.githubusercontent.com/interreg-simile/simile-app/main/media/download_on_the_play_store_badge.svg)](https://play.google.com/store/apps/details?id=com.polimi.simile&hl=it)
 
 
 ## Development setup
