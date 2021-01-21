@@ -9,6 +9,7 @@
     "dev": "ionic serve",
     "dev:android": "ionic cordova run android -l",
     "run:android": "ionic cordova run android",
+    "build:android": "ionic cordova build android",
     "prepare:ios": "ionic cordova prepare ios",
     "tslint:check": "tslint -c tslint.json 'src/**/*.{ts,tsx}'",
     "stylelint:check": "stylelint \"src/**/*.scss\"",
