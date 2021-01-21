@@ -12,9 +12,7 @@ export enum ConnectionStatus {
 
 @Injectable({providedIn: 'root'})
 export class NetworkService {
-  private status: BehaviorSubject<ConnectionStatus> = new BehaviorSubject(
-    ConnectionStatus.Offline
-  );
+  private status: BehaviorSubject<ConnectionStatus> = new BehaviorSubject(ConnectionStatus.Offline);
 
   constructor(
     private network: Network,
@@ -24,12 +22,7 @@ export class NetworkService {
 
   init(): void {
     this.initializeNetworkEvents();
-
-    const status =
-      this.network.type !== 'none'
-        ? ConnectionStatus.Online
-        : ConnectionStatus.Offline;
-
+    const status = this.network.type !== 'none' ? ConnectionStatus.Online : ConnectionStatus.Offline;
     this.status.next(status);
   }
 

@@ -18,9 +18,6 @@ export class OfflineService {
 
   async getStoredObservations(): Promise<Array<any>> {
     const storedData = await this.storage.get(this._storageKey);
-
-    this.logger.log(JSON.parse(storedData));
-
     return JSON.parse(storedData);
   }
 

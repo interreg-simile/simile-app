@@ -207,7 +207,8 @@ export class MapPage implements OnInit {
 
         if (status === ConnectionStatus.Online) {
           this.setOnlineBasemap();
-          this.handleMapData().finally(() => this.changeRef.detectChanges());
+          this.handleMapData()
+            .finally(() => this.changeRef.detectChanges());
           return;
         }
 
@@ -529,13 +530,12 @@ export class MapPage implements OnInit {
 
     this._hasFetchedData = false;
 
-    this.handleMapData().finally(() => this.changeRef.detectChanges());
+    this.handleMapData()
+      .finally(() => this.changeRef.detectChanges());
   }
 
   private handleMapData(): Promise<Array<any>> {
-    if (
-      this.networkService.getCurrentNetworkStatus() === ConnectionStatus.Offline
-    ) {
+    if (this.networkService.getCurrentNetworkStatus() === ConnectionStatus.Offline) {
       return Promise.all([]);
     }
 
@@ -569,7 +569,8 @@ export class MapPage implements OnInit {
         .catch(() => this.logger.error('Error posting stored observations.'))
     );
 
-    return Promise.all(promises).finally(() => (this._isLoading = false));
+    return Promise.all(promises)
+      .finally(() => (this._isLoading = false));
   }
 
   private populateMap(): Promise<Array<void>> {
@@ -785,6 +786,9 @@ export class MapPage implements OnInit {
   ionViewWillLeave() {
     this._savedMapCenter = this._map.getCenter();
     this._savedZoomLevel = this._map.getZoom();
+
+    this._networkSub.unsubscribe()
+    this._networkSub = null
 
     this._map.remove();
     this._map = null;
