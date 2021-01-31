@@ -16,6 +16,7 @@ import {Geolocation} from '@ionic-native/geolocation/ngx';
 import {Diagnostic} from '@ionic-native/diagnostic/ngx';
 import {Camera} from '@ionic-native/camera/ngx';
 import {File} from '@ionic-native/file/ngx';
+import {OneSignal} from '@ionic-native/onesignal/ngx';
 
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {IModuleTranslationOptions, ModuleTranslateLoader} from '@larscom/ngx-translate-module-loader';
@@ -71,7 +72,8 @@ import {HelpModalComponent} from './shared/helps/help-modal/help-modal.component
     File,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     InAppBrowser,
-    interceptorProviders
+    interceptorProviders,
+    OneSignal
   ],
   bootstrap: [AppComponent]
 })

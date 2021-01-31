@@ -9,6 +9,7 @@ import {LangService} from './shared/lang.service';
 import {Duration, ToastService} from './shared/toast.service';
 import {NetworkService} from './shared/network.service';
 import {FileService} from './shared/file.service';
+import {NotificationsService} from './shared/notifications.service';
 
 export const statusBarColor = '#00515F';
 export const projectEmail = 'interreg-simile@polimi.it';
@@ -37,7 +38,8 @@ export class AppComponent {
     private toastService: ToastService,
     private router: Router,
     private networkService: NetworkService,
-    private fileService: FileService
+    private fileService: FileService,
+    private notificationService: NotificationsService,
   ) {
     this.initializeApp().then(() => {
       this.onBackButton();
@@ -53,6 +55,9 @@ export class AppComponent {
 
     this.statusBar.backgroundColorByHexString(statusBarColor);
     this.statusBar.styleLightContent();
+
+    this.notificationService.initOneSignal()
+    this.logger.debug('Notification service initialized')
 
     await this.fileService
       .createImageDir()
