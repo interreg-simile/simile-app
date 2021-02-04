@@ -21,8 +21,8 @@ import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {IModuleTranslationOptions, ModuleTranslateLoader} from '@larscom/ngx-translate-module-loader';
 import {LoggerModule, NgxLoggerLevel} from 'ngx-logger';
 
-import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module';
+import {AppComponent} from './app.component';
+import {AppRoutingModule} from './app-routing.module';
 import {environment} from '../environments/environment';
 import {interceptorProviders} from './shared/interceptors/interceptors';
 import {PhotoViewerComponent} from './shared/photo-viewer/photo-viewer.component';
@@ -97,6 +97,7 @@ export function translateLoader(http: HttpClient): ModuleTranslateLoader {
       {moduleName: 'page-project', baseTranslateUrl},
       {moduleName: 'page-settings', baseTranslateUrl},
       {moduleName: 'page-auth', baseTranslateUrl},
+      {moduleName: 'page-links', baseTranslateUrl},
     ],
   }
 

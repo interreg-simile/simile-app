@@ -33,6 +33,18 @@
 					</ion-item>
 				</ion-menu-toggle>
 
+				<!-- Links -->
+				<ion-menu-toggle menu="main">
+					<ion-item
+							lines="none"
+							routerLink="/links"
+							routerLinkActive="active-link"
+					>
+						<ion-icon name="bookmarks" slot="start"></ion-icon>
+						<ion-label>{{ "page-links.title" | translate }}</ion-label>
+					</ion-item>
+				</ion-menu-toggle>
+
 				<!-- Project -->
 				<ion-menu-toggle menu="main">
 					<ion-item

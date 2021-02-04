@@ -11,17 +11,16 @@ export class LangService {
 
   private readonly _storageKeyLanguage = 'language';
 
-  constructor(private storage: Storage, private i18n: TranslateService) {
-  }
+  constructor(private storage: Storage, private i18n: TranslateService) {}
 
-  async initAppLanguage(): Promise<void> {
+  async initAppLanguage() {
     this.i18n.addLangs(this.supportedLanguages);
     this.i18n.setDefaultLang(this.defaultLanguage);
 
     await this.setAppLanguage();
   }
 
-  private async setAppLanguage(): Promise<void> {
+  private async setAppLanguage() {
     const savedLang = await this.storage.get(this._storageKeyLanguage);
 
     if (savedLang && this.supportedLanguages.includes(savedLang)) {
@@ -39,13 +38,13 @@ export class LangService {
     await this.useLanguage(this.defaultLanguage);
   }
 
-  async useLanguage(lang: string): Promise<void> {
+  async useLanguage(lang: string) {
     this.i18n.use(lang);
     await this.saveAppLanguage(lang);
     this.currLanguage = lang;
   }
 
-  async saveAppLanguage(lang: string): Promise<void> {
+  async saveAppLanguage(lang: string) {
     await this.storage.set(this._storageKeyLanguage, lang);
   }
 }

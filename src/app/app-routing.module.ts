@@ -26,6 +26,7 @@ const routes: Routes = [
   {path: 'project', loadChildren: './project/project.module#ProjectPageModule'},
   {path: 'glossary', loadChildren: './glossary/glossary.module#GlossaryPageModule'},
   {path: 'settings', loadChildren: './settings/settings.module#SettingsPageModule'},
+  {path: 'links', loadChildren:'./links/links.module#LinksPageModule'},
 ];
 
 @NgModule({

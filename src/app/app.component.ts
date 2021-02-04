@@ -56,16 +56,12 @@ export class AppComponent {
 
     await this.fileService
       .createImageDir()
-      .catch((err) =>
-        this.logger.error('Error initializing the images directory', err)
-      );
+      .catch(err => this.logger.error('Error initializing the images directory', err));
     this.logger.debug('Images directory initialized')
 
     await this.langService
       .initAppLanguage()
-      .catch((err) =>
-        this.logger.error('Error initializing the app language', err)
-      );
+      .catch(err => this.logger.error('Error initializing the app language', err));
     this.logger.debug('App language initialized')
   }
 
