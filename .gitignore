@@ -30,4 +30,4 @@ build.json
 /plugins
 /www
 /builds
-/.gradle/
+/.gradle
