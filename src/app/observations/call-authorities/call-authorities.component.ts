@@ -1,6 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {ModalController} from '@ionic/angular';
 import {InAppBrowser} from '@ionic-native/in-app-browser/ngx';
+import {AuthorityContact} from '../observations.service';
 
 @Component({
   selector: 'app-call-authorities',
@@ -8,18 +9,12 @@ import {InAppBrowser} from '@ionic-native/in-app-browser/ngx';
   styleUrls: ['./call-authorities.component.scss'],
 })
 export class CallAuthoritiesComponent {
-  @Input() area: number;
+  @Input() contact: AuthorityContact;
   @Input() callId: string;
-
-  contacts = {
-    1: '800.061.160',
-    2: '',
-    3:'https://www4.ti.ch/dt/da/spaas/sezione/'
-  };
 
   constructor(private modalCtr: ModalController, private inAppBrowser: InAppBrowser) { }
 
-  onTelClick(tel: string) {
+  onPhoneClick(tel: string) {
     this.inAppBrowser.create(`tel:${tel}`, '_system')
   }
 

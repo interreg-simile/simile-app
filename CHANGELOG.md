@@ -8,6 +8,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Added useful links page
 
+### Updated
+- Contact authority modal is now generated dynamically
+
+### Fixed
+- Fixed error opening observation without attribute `photos`
+
 ## [2.1.0] - 2021-01-25
 ### Updated
 - Added position to alerts

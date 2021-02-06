@@ -108,9 +108,13 @@
       "cordova-plugin-geolocation": {},
       "cordova-plugin-file": {},
       "cordova-plugin-androidx-adapter": {},
-      "cordova-plugin-camera": {},
+      "cordova-plugin-camera": {
+        "ANDROID_SUPPORT_V4_VERSION": "27.+"
+      },
       "cordova-sqlite-storage": {},
-      "cordova.plugins.diagnostic": {}
+      "cordova.plugins.diagnostic": {
+        "ANDROIDX_VERSION": "1.+"
+      }
     },
     "platforms": [
       "android",

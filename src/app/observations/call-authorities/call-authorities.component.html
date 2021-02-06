@@ -1,19 +1,21 @@
 <section class="container">
 	<p class="ion-margin-bottom">
-		{{ "page-new-obs.modal-call.first-text." + area | translate }}
+		{{ "page-new-obs.modal-call.first-text." + contact.type | translate }}
 	</p>
 
-	<div class="link" *ngIf="area !== 3">
-		<a (click)="onTelClick(contacts[area])">{{ contacts[area] }}</a>
+	<div class="link" *ngIf="contact.type === 'phone'">
+		<a (click)="onPhoneClick(contact.contact)">{{ contact.contact }}</a>
 	</div>
 
-	<div class="link" *ngIf="area === 3">
-		<a (click)="onUrlClick(contacts[area])">{{ contacts[area] }}</a>
+	<div class="link" *ngIf="contact.type === 'site'">
+		<a (click)="onUrlClick(contact.contact)">{{ contact.contact }}</a>
 	</div>
 
-	<p class="ion-margin-top second-text" [innerHTML]="'page-new-obs.modal-call.second-text.' + area | translate"></p>
+	<p class="ion-margin-top" [innerHTML]="'page-new-obs.modal-call.second-text' | translate"></p>
 
 	<p class="code ion-margin-top">{{ callId }}</p>
+
+	<p class="ion-margin-top" *ngIf="contact.instructions">{{ contact.instructions }}</p>
 
 	<div class="close ion-margin-top">
 		<span (click)="onClose()">{{"page-new-obs.modal-call.btn-close" | translate}}</span>

@@ -13,6 +13,7 @@ import {ObsInfo} from './info/obs-info.model';
 import {ConnectionStatus, NetworkService} from '../shared/network.service';
 import {OfflineService} from './offline.service';
 import {FileService} from '../shared/file.service';
+import {LangService} from '../shared/lang.service';
 
 export interface MinimalObservation {
   _id: string;
@@ -24,6 +25,12 @@ export interface MinimalObservation {
     area?: number;
   };
   createdAt: string;
+}
+
+export interface AuthorityContact {
+  contact: string;
+  type: 'phone' | 'site';
+  instructions?: string;
 }
 
 @Injectable({providedIn: 'root'})
@@ -41,7 +48,8 @@ export class ObservationsService {
     private fileService: FileService,
     private networkService: NetworkService,
     private logger: NGXLogger,
-    private offlineService: OfflineService
+    private offlineService: OfflineService,
+    private i18n: LangService,
   ) {
   }
 
@@ -66,7 +74,7 @@ export class ObservationsService {
 
     const data = res.data as ObsInfo;
 
-    data.photos = data.photos.map((p) => `${environment.apiBaseUrl}/${p}`);
+    data.photos = (data.photos || []).map((p) => `${environment.apiBaseUrl}/${p}`);
 
     if (get(data, 'details.outlets.signagePhoto')) {
       data.details.outlets.signagePhoto = `${environment.apiBaseUrl}/${data.details.outlets.signagePhoto}`;
@@ -87,6 +95,28 @@ export class ObservationsService {
       .toPromise();
 
     return res.data;
+  }
+
+  async getAuthorityContact(area: number): Promise<AuthorityContact | undefined> {
+    const url = `${environment.apiBaseUrl}/${environment.apiVersion}/misc/authority-contacts`;
+
+    const qParams = new HttpParams()
+      .set('area', area.toString());
+
+    const res = await this.http
+      .get<GenericApiResponse>(url, {params: qParams})
+      .toPromise();
+    const contacts = res.data;
+
+    if (!contacts[0]) {
+      return undefined
+    }
+
+    return {
+      contact: contacts[0].contact,
+      type: contacts[0].type,
+      ...contacts[0].instructions && { instructions: contacts[0].instructions[this.i18n.currLanguage] || contacts[0].instructions.it }
+    }
   }
 
   async postObservation(): Promise<'online' | 'offline'> {
@@ -143,6 +173,9 @@ export class ObservationsService {
       obs.position.coordinates.lng,
       obs.position.coordinates.lat,
     ];
+    if (obs.position.area) {
+      delete obs.position.area
+    }
 
     Object.keys(obs.details).forEach((k) => {
       if (!obs.details[k].checked) {

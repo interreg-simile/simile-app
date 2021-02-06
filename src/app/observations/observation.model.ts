@@ -17,6 +17,7 @@ export interface Position {
   coordinates: LatLng;
   accuracy: number;
   roi?: string;
+  area?: number;
 }
 
 export interface Weather {

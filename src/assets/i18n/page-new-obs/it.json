@@ -277,7 +277,7 @@
   "or": "- o -",
   "btn-call": "Contatta le autorità",
   "err-msg": "Impossibile inviare l'osservazione, ci scusiamo per il disagio.",
-  "call-no-roi-msg": "Non è possibile contattare le autorità perchè il punto che hai indicato è in una zona supportata dall'applicazione.",
+  "call-no-roi-msg": "Non è possibile contattare le autorità perchè l'osservazione si trova in un'area al momento non supportata.",
   "call-data-error": "Impossibile proseguire, ci scusiamo per il disagio. L'osservazione è stata comunque inserita.",
   "msg-no-photo": "È richiesta almeno una foto.",
   "msg-weather-error": "Errore durante la richiesta dei dati meteo.",
@@ -286,15 +286,10 @@
   "alert-btn-cancel": "Annulla",
   "modal-call": {
     "first-text": {
-      "1": "Per segnalare un problema alle autorità competenti devi chiamare il seguente numero:",
-      "2": "Per segnalare un problema alle autorità competenti devi chiamare il seguente numero:",
-      "3": "Per segnalare un problema alle autorità competenti apri il seguente link:"
+      "phone": "Per segnalare un problema alle autorità competenti chiama il seguente numero:",
+      "site": "Per segnalare un problema alle autorità competenti apri il seguente link:"
     },
-    "second-text": {
-      "1": "Ti risponderà la <span class=\"bold-primary\">sala operativa della protezione civile di Regione Lombardia</span>.<br>Comunica il seguente codice in modo che l'operatore possa risalire all'osservazione che hai appena eseguito:",
-      "2": "Ti risponderà la <span class=\"bold-primary\">???</span>.<br>Comunica il seguente codice in modo che l'operatore possa risalire all'osservazione che hai appena eseguito:",
-      "3": "Clicca sul link <span class=\"bold-primary\">scrivici</span> sotto ai recapiti telefonici e compila il questionario inserendo come oggetto la dicitura <span class=\"bold-primary\">SIMILE</span> e come messaggio il seguente codice:"
-    },
+    "second-text": "Questo è il codice associato alla tua osservazione:",
     "btn-close": "Chiudi"
   }
 }

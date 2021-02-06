@@ -20,7 +20,6 @@ import {PhotoViewerComponent} from '../../shared/photo-viewer/photo-viewer.compo
 export class InfoPage implements OnInit {
   public _isLoading: boolean;
   public _obs: ObsInfo;
-  public _userId: string;
 
   public objKeys = Object.keys;
 

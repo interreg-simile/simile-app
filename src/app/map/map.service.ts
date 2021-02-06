@@ -20,6 +20,11 @@ import {Event} from '../news/events/event.model';
 import {AuthService} from '../shared/auth.service';
 import {Alert} from '../news/alerts/alert.model';
 
+interface Roi {
+  _id: string;
+  area: { code: number, description: string };
+}
+
 @Injectable({providedIn: 'root'})
 export class MapService {
   private readonly _positionWatcherOpts = {
@@ -90,7 +95,7 @@ export class MapService {
     await alert.present();
   }
 
-  async pointInRoi(coords: LatLng): Promise<number> {
+  async pointInRoi(coords: LatLng): Promise<Roi | undefined> {
     const url = `${environment.apiBaseUrl}/${environment.apiVersion}/rois/`;
 
     const qParams = new HttpParams()
@@ -100,12 +105,9 @@ export class MapService {
     const res = await this.http
       .get<GenericApiResponse>(url, {params: qParams})
       .toPromise();
+    const rois: Array<Roi> = res.data
 
-    if (res.data.length) {
-      return res.data[0]._id;
-    }
-
-    return;
+    return rois[0];
   }
 
   createObservationMarker(obs: MinimalObservation): Marker {

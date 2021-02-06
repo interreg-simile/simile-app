@@ -707,18 +707,17 @@ export class MapPage implements OnInit {
       await this.dismissLoading();
 
       if (!roi) {
-        const roiAlertMsg = `page-map.alert-msg-roi-${
-          !!roiErr ? 'error' : 'undefined'
-        }`;
+        const roiAlertMsg = `page-map.alert-msg-roi-${!!roiErr ? 'error' : 'undefined'}`;
         const roiAlertChoice = await this.presentInsertionAlert(roiAlertMsg);
 
         if (roiAlertChoice === 'cancel') {
           this.obsService.resetNewObservation();
           return;
         }
+      } else {
+        this.obsService.newObservation.position.roi = roi._id;
+        this.obsService.newObservation.position.area = roi.area.code;
       }
-
-      this.obsService.newObservation.position.roi = roi;
     }
 
     const pic = await this.cameraService.takePicture();

@@ -8,7 +8,7 @@ import {Router} from '@angular/router';
 import {NGXLogger} from 'ngx-logger';
 import {Subscription} from 'rxjs';
 
-import {MinimalObservation, ObservationsService} from '../observations.service';
+import {AuthorityContact, MinimalObservation, ObservationsService} from '../observations.service';
 import {PhotoViewerComponent} from '../../shared/photo-viewer/photo-viewer.component';
 import {CameraService, PicResult} from '../../shared/camera.service';
 import {Duration, ToastService} from '../../shared/toast.service';
@@ -34,6 +34,7 @@ export class NewObservationPage implements OnInit, OnDestroy {
   public _isWeatherLoading = false;
 
   public _newObservation: any;
+  public _authorityContact: AuthorityContact;
 
   public skyIcons = {
     1: 'wi-day-sunny',
@@ -67,8 +68,7 @@ export class NewObservationPage implements OnInit, OnDestroy {
     private popoverCrt: PopoverController,
     private actionSheetCtrl: ActionSheetController,
     public authService: AuthService
-  ) {
-  }
+  ) { }
 
   ngOnInit() {
     if (!this.obsService.newObservation) {
@@ -81,15 +81,16 @@ export class NewObservationPage implements OnInit, OnDestroy {
 
     this.getWeatherData(false)
       .catch(() => this.toastService.presentToast('page-map.msg-weather-error', Duration.short))
-      .finally(() => (this._isLoading = false));
+      .finally(() => {
+        this.getAuthorityContact()
+          .finally(() => (this._isLoading = false));
+      })
 
     this._backButtonSub = this.platform.backButton.subscribeWithPriority(999, () => this.onClose());
   }
 
   async getWeatherData(showErr: boolean) {
-    if (
-      this.networkService.getCurrentNetworkStatus() === ConnectionStatus.Offline
-    ) {
+    if (this.networkService.getCurrentNetworkStatus() === ConnectionStatus.Offline) {
       return;
     }
 
@@ -99,8 +100,7 @@ export class NewObservationPage implements OnInit, OnDestroy {
       .catch((e) => [undefined, e]);
 
     if (err === undefined && data !== undefined) {
-      this._newObservation.weather.temperature =
-        Math.round(data.temperature * 10) / 10;
+      this._newObservation.weather.temperature = Math.round(data.temperature * 10) / 10;
       this._newObservation.weather.sky.code = data.sky;
       this._newObservation.weather.wind = Math.round(data.wind * 10) / 10;
       return;
@@ -111,6 +111,25 @@ export class NewObservationPage implements OnInit, OnDestroy {
         'page-new-obs.weather.err',
         Duration.short
       );
+    }
+  }
+
+  async getAuthorityContact() {
+    if (this.networkService.getCurrentNetworkStatus() === ConnectionStatus.Offline || !this._newObservation.position.area) {
+      return;
+    }
+
+    const [data, err] = await this.obsService
+      .getAuthorityContact(this._newObservation.position.area)
+      .then((v) => [v, undefined])
+      .catch((e) => {
+        this.logger.error('Error fetching authority contacts', e)
+        return [undefined, e]
+      });
+
+    if (data) {
+      this._authorityContact = data
+      return
     }
   }
 
@@ -359,7 +378,7 @@ export class NewObservationPage implements OnInit, OnDestroy {
       return;
     }
 
-    if (!this.obsService.newObservation.position.roi) {
+    if (!this._authorityContact) {
       await this.toastService.presentToast('page-new-obs.call-no-roi-msg', Duration.short);
       return;
     }
@@ -399,7 +418,7 @@ export class NewObservationPage implements OnInit, OnDestroy {
       cssClass: 'auto-height',
       backdropDismiss: false,
       componentProps: {
-        area: obs.position.area,
+        contact: this._authorityContact,
         callId: obs.callId,
       },
     });
