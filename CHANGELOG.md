@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Updated
 - Contact authority modal is now generated dynamically
+- Added `date` property to observations 
 
 ### Fixed
 - Fixed error opening observation without attribute `photos`

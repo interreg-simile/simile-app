@@ -24,7 +24,7 @@ export interface MinimalObservation {
     roi?: string;
     area?: number;
   };
-  createdAt: string;
+  date: string;
 }
 
 export interface AuthorityContact {
@@ -50,8 +50,7 @@ export class ObservationsService {
     private logger: NGXLogger,
     private offlineService: OfflineService,
     private i18n: LangService,
-  ) {
-  }
+  ) { }
 
   async fetchObservations(): Promise<void> {
     const url = `${environment.apiBaseUrl}/${environment.apiVersion}/observations/`;

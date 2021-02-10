@@ -118,7 +118,7 @@ export class MapService {
       markerOptions.zIndexOffset = 4;
       markerOptions['isPersonal'] = true;
     } else {
-      if (moment.utc(obs.createdAt).isBefore(moment.utc().subtract(1, 'months'))) {
+      if (moment.utc(obs.date).isBefore(moment.utc().subtract(1, 'months'))) {
         markerOptions.icon = fadedObservationMarkerIcon();
         markerOptions.zIndexOffset = 2;
       } else {

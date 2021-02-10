@@ -257,7 +257,7 @@ export class MeasuresImpl implements Measures {
 export class Observation {
   id: string;
 
-  createdAt: Date;
+  date: Date;
 
   uid: string;
 

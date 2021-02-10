@@ -146,7 +146,7 @@ export class MapPage implements OnInit {
       this._obsMarkers.clearLayers();
       this._userObsMarkers.clearLayers();
       obs.forEach((o) => {
-        if (moment.utc(o.createdAt).isBefore(moment.utc().subtract(9, 'months'))) {
+        if (moment.utc(o.date).isBefore(moment.utc().subtract(9, 'months'))) {
           return
         }
 

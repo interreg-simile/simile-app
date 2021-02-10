@@ -11,7 +11,7 @@
 	<section *ngIf="!_isLoading" class="content">
 		<!-- Creation date -->
 		<section class="date sub-section-space">
-			{{_obs.createdAt | date:"medium":undefined:i18n.currentLang }}
+			{{_obs.date | date:"medium":undefined:i18n.currentLang }}
 		</section>
 
 		<!-- Photos -->

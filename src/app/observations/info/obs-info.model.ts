@@ -187,6 +187,7 @@ export interface ObsInfo {
   otherOpen?: boolean;
   other?: string;
   photos?: Array<string>;
+  date: string;
   createdAt: string;
   updatedAt: string;
 }
