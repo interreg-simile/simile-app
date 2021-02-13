@@ -107,4 +107,12 @@ export class AuthService {
 
     await this.http.post<GenericApiResponse>(url, body).toPromise();
   }
+
+  async sendResetPasswordEmail(email: string) {
+    const url = `${environment.apiBaseUrl}/${environment.apiVersion}/auth/reset-password`;
+
+    const body = {email};
+
+    await this.http.post<GenericApiResponse>(url, body).toPromise();
+  }
 }

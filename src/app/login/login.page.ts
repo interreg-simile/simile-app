@@ -8,6 +8,7 @@ import {AuthService} from '../shared/auth.service';
 import {NetworkService} from '../shared/network.service';
 import {projectEmail} from '../app.component';
 import {ConfirmEmailComponent} from './confirm-email/confirm-email.component';
+import {ResetPasswordModalComponent} from './reset-password-modal/reset-password-modal.component';
 
 @Component({
   selector: 'app-login',
@@ -87,15 +88,13 @@ export class LoginPage implements OnInit{
   }
 
   async onForgotPasswordClick() {
-    const alert = await this.alertCtr.create({
-      message: this.i18n.instant('page-auth.forgot-password-mg', {
-        email: projectEmail,
-      }),
-      buttons: [{text: this.i18n.instant('common.alerts.btn-ok')}],
+    const modal = await this.modalCtr.create({
+      component: ResetPasswordModalComponent,
+      cssClass: 'auto-height',
       backdropDismiss: false,
     });
 
-    await alert.present();
+    await modal.present();
   }
 
   async onRegisterClick() {

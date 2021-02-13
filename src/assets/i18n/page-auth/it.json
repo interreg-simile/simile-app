@@ -1,7 +1,6 @@
 {
   "login": "Login",
   "forgot-password": "Password dimenticata",
-  "forgot-password-mg": "Per recuperare la password invia una mail a {{email}}",
   "noAccount": "Non hai un account?",
   "register": "Registrati",
   "or": "- o -",
@@ -14,7 +13,16 @@
     "notReceived": "Non hai ricevuto l'email?",
     "resend": "Inviala di nuovo",
     "notFoundError": "Questa email non risulta registrata nei nostri sistemi",
-    "alreadyVerifiedError": "Questa email è già verificata"
+    "alreadyVerifiedError": "Questa email è già verificata",
+    "success": "Email inviata con successo!"
+  },
+  "resetPasswordModal": {
+    "title": "Recupera password",
+    "message": "Inserisci la tua email. Ti invieremo una nuova password.",
+    "btn": "Invia nuova password",
+    "missingEmail": "Inserisci la tua email",
+    "notFoundError": "Questa email non risulta registrata nei nostri sistemi",
+    "success": "Email inviata con successo!"
   },
   "modalRegister": {
     "title": "Registrazione",

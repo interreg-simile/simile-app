@@ -19,7 +19,8 @@
     "btn-ok": "OK",
     "btn-cancel": "Cancella",
     "btn-confirm": "Conferma",
-    "btn-continue": "Continua"
+    "btn-continue": "Continua",
+    "btn-close": "Chiudi"
   },
   "download-photo": {
     "success": "Immagine scaricata con successo",

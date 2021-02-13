@@ -1,17 +1,17 @@
-import {Component, Input} from '@angular/core';
+import { Component } from '@angular/core';
 import {LoadingController, ModalController} from '@ionic/angular';
+import {Duration, ToastService} from '../../shared/toast.service';
 import {NetworkService} from '../../shared/network.service';
 import {TranslateService} from '@ngx-translate/core';
-import {Duration, ToastService} from '../../shared/toast.service';
 import {AuthService} from '../../shared/auth.service';
 
 @Component({
-  selector: 'app-confirm-email',
-  templateUrl: './confirm-email.component.html',
-  styleUrls: ['./confirm-email.component.scss'],
+  selector: 'app-reset-password-modal',
+  templateUrl: './reset-password-modal.component.html',
+  styleUrls: ['./reset-password-modal.component.scss'],
 })
-export class ConfirmEmailComponent {
-  @Input() email: string;
+export class ResetPasswordModalComponent {
+  public email: string;
 
   constructor(
     private modalCtr: ModalController,
@@ -22,7 +22,12 @@ export class ConfirmEmailComponent {
     private toastService: ToastService,
   ) { }
 
-  async onSendEmailClick() {
+  async onResetPasswordClick() {
+    if (!this.email) {
+      await this.toastService.presentToast('page-auth.resetPasswordModal.missingEmail', Duration.short);
+      return;
+    }
+
     if (!this.networkService.checkOnlineContentAvailability()) {
       return;
     }
@@ -35,17 +40,12 @@ export class ConfirmEmailComponent {
     await loading.present();
 
     try {
-      await this.authService.sendConfirmationEmail(this.email);
+      await this.authService.sendResetPasswordEmail(this.email);
     } catch (err) {
       await loading.dismiss();
 
       if (err.status === 404) {
-        await this.toastService.presentToast('page-auth.emailNotVerifiedModal.notFoundError', Duration.short);
-        return
-      }
-
-      if (err.status === 409) {
-        await this.toastService.presentToast('page-auth.emailNotVerifiedModal.alreadyVerifiedError', Duration.short);
+        await this.toastService.presentToast('page-auth.resetPasswordModal.notFoundError', Duration.short);
         return
       }
 
@@ -55,7 +55,7 @@ export class ConfirmEmailComponent {
 
     await loading.dismiss();
     await this.onClose();
-    await this.toastService.presentToast('page-auth.emailNotVerifiedModal.success', Duration.short);
+    await this.toastService.presentToast('page-auth.resetPasswordModal.success', Duration.short);
   }
 
   async onClose() {
