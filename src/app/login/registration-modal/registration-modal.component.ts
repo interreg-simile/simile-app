@@ -163,7 +163,7 @@ export class RegistrationModalComponent {
     await loading.dismiss();
     await this.toastService.presentToast(
       'page-auth.modalRegister.success',
-      Duration.short
+      Duration.long
     );
     await this.closeModal();
   }

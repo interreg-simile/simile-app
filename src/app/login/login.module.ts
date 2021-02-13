@@ -7,11 +7,12 @@ import {IonicModule} from '@ionic/angular';
 import {LoginPage} from './login.page';
 import {TranslateModule} from '@ngx-translate/core';
 import {RegistrationModalComponent} from './registration-modal/registration-modal.component';
+import {ConfirmEmailComponent} from './confirm-email/confirm-email.component';
 
 const routes: Routes = [{path: '', component: LoginPage}];
 
 @NgModule({
-  entryComponents: [RegistrationModalComponent],
+  entryComponents: [RegistrationModalComponent, ConfirmEmailComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -19,7 +20,6 @@ const routes: Routes = [{path: '', component: LoginPage}];
     RouterModule.forChild(routes),
     TranslateModule,
   ],
-  declarations: [LoginPage, RegistrationModalComponent],
+  declarations: [LoginPage, RegistrationModalComponent, ConfirmEmailComponent],
 })
-export class LoginPageModule {
-}
+export class LoginPageModule {}

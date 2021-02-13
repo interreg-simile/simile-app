@@ -8,7 +8,14 @@
   "continueAsGuest": "Continua come ospite",
   "missingCredentials": "Devi inserire email e password",
   "invalidCredentials": "Credenziali errate",
-  "emailNotVerified": "Email non verificata",
+  "emailNotVerifiedModal": {
+    "title": "Email non verificata!",
+    "message": "Non hai verificato il tuo indirizzo email. Segui le istruzioni nella mail che ti abbiamo inviato per verificarlo.",
+    "notReceived": "Non hai ricevuto l'email?",
+    "resend": "Inviala di nuovo",
+    "notFoundError": "Questa email non risulta registrata nei nostri sistemi",
+    "alreadyVerifiedError": "Questa email è già verificata"
+  },
   "modalRegister": {
     "title": "Registrazione",
     "mandatoryText": "* Campi obbligatori",
@@ -30,6 +37,6 @@
     "passwordMismatch": "Le password non corrispondono",
     "invalidInfo": "Errore nei dati forniti",
     "emailInUse": "Indirizzo email già registrato",
-    "success": "Registrazione completata con successo"
+    "success": "Registrazione completata con successo. Segui le istruzioni nella mail che ti è stata inviata per confermare il tuo indirizzo."
   }
 }

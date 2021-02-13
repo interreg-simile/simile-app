@@ -1,0 +1,25 @@
+<section class="container">
+	<p class="ion-margin-bottom title">
+		{{ "page-auth.emailNotVerifiedModal.title" | translate }}
+	</p>
+
+	<p class="ion-margin-bottom">
+		{{ "page-auth.emailNotVerifiedModal.message" | translate }}
+	</p>
+
+	<p class="ion-margin-bottom">
+		{{ "page-auth.emailNotVerifiedModal.notReceived" | translate }}
+	</p>
+
+	<ion-button
+			expand="block"
+			color="primary"
+			(click)="onSendEmailClick()"
+	>
+		{{"page-auth.emailNotVerifiedModal.resend" | translate}}
+	</ion-button>
+
+	<div class="close ion-margin-top">
+		<span (click)="onClose()">{{"page-new-obs.modal-call.btn-close" | translate}}</span>
+	</div>
+</section>

@@ -23,7 +23,7 @@ export class AuthService {
   constructor(private http: HttpClient, private storage: Storage) {
   }
 
-  async retrieveAuthStatus(): Promise<void> {
+  async retrieveAuthStatus() {
     this.isGuest = await this.storage.get(this._storageKeyGuest);
     this.token = await this.storage.get(this._storageKeyToken);
     this.userId = await this.storage.get(this._storageKeyUserId);
@@ -37,7 +37,7 @@ export class AuthService {
     return this.token && this.userId;
   }
 
-  async login(email: string, password: string): Promise<void> {
+  async login(email: string, password: string) {
     const url = `${environment.apiBaseUrl}/${environment.apiVersion}/auth/login`;
 
     const body = {email, password};
@@ -54,7 +54,7 @@ export class AuthService {
     this.userId = data.userId;
   }
 
-  async signAsGuest(): Promise<void> {
+  async signAsGuest() {
     await this.storage.set(this._storageKeyGuest, true);
     await this.storage.remove(this._storageKeyToken);
     await this.storage.remove(this._storageKeyUserId);
@@ -64,7 +64,7 @@ export class AuthService {
     this.userId = null;
   }
 
-  async logout(): Promise<void> {
+  async logout() {
     await this.storage.remove(this._storageKeyGuest);
     await this.storage.remove(this._storageKeyToken);
     await this.storage.remove(this._storageKeyUserId);
@@ -83,7 +83,7 @@ export class AuthService {
     city: string,
     yearOfBirth: number,
     gender: string
-  ): Promise<void> {
+  ) {
     const url = `${environment.apiBaseUrl}/${environment.apiVersion}/auth/register`;
 
     const body = {
@@ -96,6 +96,14 @@ export class AuthService {
       yearOfBirth,
       gender,
     };
+
+    await this.http.post<GenericApiResponse>(url, body).toPromise();
+  }
+
+  async sendConfirmationEmail(email: string) {
+    const url = `${environment.apiBaseUrl}/${environment.apiVersion}/auth/send-confirmation-email`;
+
+    const body = {email};
 
     await this.http.post<GenericApiResponse>(url, body).toPromise();
   }

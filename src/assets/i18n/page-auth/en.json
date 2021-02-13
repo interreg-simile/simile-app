@@ -8,7 +8,14 @@
   "continueAsGuest": "Continue as guest",
   "missingCredentials": "Please, insert email and password",
   "invalidCredentials": "Invalid credentials",
-  "emailNotVerified": "Email not verified",
+  "emailNotVerifiedModal": {
+    "title": "Email not verified!",
+    "message": "You have not verified your email address. Please, follow the instructions on the email we have sent you to verify it.",
+    "notReceived": "Email not received?",
+    "resend": "Resend it",
+    "notFoundError": "This email is not registered in our system",
+    "alreadyVerifiedError": "This email already verified"
+  },
   "modalRegister": {
     "title": "Registration",
     "mandatoryText": "* Mandatory fields",
@@ -30,6 +37,6 @@
     "passwordMismatch": "Passwords don't match",
     "invalidInfo": "Error in inserted data",
     "emailInUse": "Email already in use",
-    "success": "Registration successful"
+    "success": "Registration successful. Please, follow the instructions in the email we sent you to confirm your address."
   }
 }
