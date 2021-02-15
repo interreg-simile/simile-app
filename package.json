@@ -84,7 +84,7 @@
     "karma-coverage-istanbul-reporter": "~3.0.2",
     "karma-jasmine": "~3.3.0",
     "karma-jasmine-html-reporter": "^1.5.0",
-    "onesignal-cordova-plugin": "^2.11.2",
+    "onesignal-cordova-plugin": "^2.11.3",
     "protractor": "~7.0.0",
     "stylelint": "^13.7.2",
     "stylelint-config-recommended-scss": "^4.2.0",
@@ -116,11 +116,12 @@
       "cordova-sqlite-storage": {},
       "cordova.plugins.diagnostic": {
         "ANDROIDX_VERSION": "1.+"
-      }
+      },
+      "onesignal-cordova-plugin": {}
     },
     "platforms": [
-      "android",
-      "ios"
+      "ios",
+      "android"
     ]
   },
   "repository": {
