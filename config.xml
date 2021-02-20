@@ -40,6 +40,7 @@
         </edit-config>
         <resource-file src="resources/android/xml/network_security_config.xml" target="app/src/main/res/xml/network_security_config.xml" />
         <allow-intent href="market:*" />
+        <hook src="hooks/copy_android_notification_icons.js" type="after_prepare" />
         <custom-preference name="android-manifest/application/@android:allowBackup" value="false" />
         <custom-preference name="android-manifest/application/@android:fullBackupContent" value="false" />
         <resource-file src="resources/android/icon/ic_launcher_background.xml" target="app/src/main/res/values/ic_launcher_background.xml" />
