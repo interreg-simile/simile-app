@@ -39,6 +39,7 @@
     "@larscom/ngx-translate-module-loader": "^2.1.1",
     "@ngx-translate/core": "^13.0.0",
     "cordova-android": "9.0.0",
+    "cordova-ios": "^6.2.0",
     "leaflet": "^1.7.1",
     "leaflet.markercluster": "^1.4.1",
     "lodash-es": "^4.17.15",
