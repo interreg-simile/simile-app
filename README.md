@@ -4,6 +4,8 @@
 
 # SIMILE - Monitoraggio Laghi
 
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+
 Cross-platform mobile application build for
 [interreg project SIMILE](https://progetti.interreg-italiasvizzera.eu/it/b/78/sistemainformativoperilmonitoraggiointegratodeilaghiinsubriciedeiloroe)
 to collect user generated data about the quality of the insubric lakes.
@@ -18,7 +20,57 @@ Program in order to develop strategies for the protection of lakes.
 
 ## Development setup
 
-*Coming soon...*
+The application is written using:
+- [Angular 10](https://v10.angular.io/docs)
+- [Ionic 5](https://ionicframework.com/docs)
+- [Cordova](https://cordova.apache.org/)
+
+To develop the service locally you need Node.js installed with the Ionic CLI package:
+```shell
+npm install -g @ionic/cli
+```
+
+Once you have all the dependencies in place, you can launch:
+
+```shell
+npm i
+```
+
+This command will install the dependencies.
+
+Now you can go in `src/environments` folder and add your environment settings.
+Create a file called `environment.ts` and a file called `environment.prod.ts` with the structure shown in `environment.example.ts`.
+
+### Develop for Android
+
+Follow this [instructions](https://ionicframework.com/docs/developing/android).
+
+To sign your App for production you will need to follow this
+[instructions](https://developer.android.com/studio/publish/app-signing.html) and create a `.keystore` file.
+Now create a file called `build.json` with the following content
+```json
+{
+  "android": {
+    "release": {
+      "keystore": "path_to_your_keystore_file",
+      "storePassword": "password_to_your_keystore_file",
+      "alias": "simile_app",
+      "password" : "password_to_your_keystore_file",
+      "keystoreType": ""
+    }
+  }
+}
+```
+Once you have the dependencies in place, run
+```shell
+npm run sign:android
+```
+to sign the App.
+
+### Develop for iOS
+
+Follow this [instructions](https://ionicframework.com/docs/developing/ios) for development and the
+[instructions](https://ionicframework.com/docs/deployment/app-store) for deployment.
 
 
 ## Contributions

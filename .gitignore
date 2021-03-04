@@ -13,6 +13,8 @@ $RECYCLE.BIN/
 *.log
 log.txt
 npm-debug.log*
+/src/environments/environment.ts
+/src/environments/environment.prod.ts
 
 build.json
 *.keystore
