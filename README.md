@@ -14,7 +14,7 @@ The project aims to improve the actual insubric lakes monitoring system and to c
 through an advanced informative system and citizen participation. The project is funded under the Interreg Italy-Switzerland Cooperation
 Program in order to develop strategies for the protection of lakes.
 
-<!-- [![Get it on App Store](https://raw.githubusercontent.com/interreg-simile/simile-app/bdde33ee8be3df1bd06c44f3d3ff6547aaa5fd7d/media/download_on_the_app_store_badge.svg)]() -->
+[![Get it on App Store](https://raw.githubusercontent.com/interreg-simile/simile-app/bdde33ee8be3df1bd06c44f3d3ff6547aaa5fd7d/media/download_on_the_app_store_badge.svg)](https://apps.apple.com/us/app/simile-monitoraggio-laghi/id1534852535)
 [![Get it on Google Play](https://raw.githubusercontent.com/interreg-simile/simile-app/bdde33ee8be3df1bd06c44f3d3ff6547aaa5fd7d/media/download_on_the_play_store_badge.svg)](https://play.google.com/store/apps/details?id=com.polimi.simile&hl=it)
 
 
