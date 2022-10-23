@@ -1,7 +1,7 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'simile',
+  appId: 'com.polimi.simile',
   appName: 'simile',
   webDir: 'www',
   bundledWebRuntime: false

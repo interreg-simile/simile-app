@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">simile</string>
+    <string name="title_activity_main">simile</string>
+    <string name="package_name">com.polimi.simile</string>
+    <string name="custom_url_scheme">com.polimi.simile</string>
+</resources>
