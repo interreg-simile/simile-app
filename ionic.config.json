@@ -1,0 +1,7 @@
+{
+  "name": "simile",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
