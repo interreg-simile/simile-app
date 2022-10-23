@@ -1,0 +1,29 @@
+{
+  "msg-exit-app": "Press again to quit the app.",
+  "error-occurred": "Error!",
+  "msg-to-be-implemented": "Function still to be implemented...",
+  "errors": {
+    "photo": "Error during the photo.",
+    "offline": "Data not available offline.",
+    "offline-function": "Function not available offline.",
+    "generic": "Something went wrong. Please, try again later."
+  },
+  "wait": "Wait...",
+  "rois": {
+    "lake_como": "Como Lake",
+    "lake_maggiore": "Maggiore Lake",
+    "lake_lugano": "Lugano Lake"
+  },
+  "alerts": {
+    "header-warning": "Warning",
+    "btn-ok": "OK",
+    "btn-cancel": "Cancel",
+    "btn-confirm": "Confirm",
+    "btn-continue": "Continue",
+    "btn-close": "Close"
+  },
+  "download-photo": {
+    "success": "Image successfully saved on your device",
+    "error": "An error occurred while trying to save the image"
+  }
+}

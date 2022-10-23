@@ -1,0 +1,29 @@
+{
+  "msg-exit-app": "Premi ancora per uscire dall'app.",
+  "error-occurred": "Errore!",
+  "msg-to-be-implemented": "Funzione non ancora implementata...",
+  "errors": {
+    "photo": "Errore durante la foto.",
+    "offline": "Dati non disponibili offline.",
+    "offline-function": "Funzione non disponibile offline.",
+    "generic": "Qualcosa è andato storto. Riprova più tardi."
+  },
+  "wait": "Attendi...",
+  "rois": {
+    "lake_como": "Lago di Como",
+    "lake_maggiore": "Lago Maggiore",
+    "lake_lugano": "Lago di Lugano"
+  },
+  "alerts": {
+    "header-warning": "Attenzione",
+    "btn-ok": "OK",
+    "btn-cancel": "Cancella",
+    "btn-confirm": "Conferma",
+    "btn-continue": "Continua",
+    "btn-close": "Chiudi"
+  },
+  "download-photo": {
+    "success": "Immagine scaricata con successo",
+    "error": "Impossibile scaricare l'immagine"
+  }
+}

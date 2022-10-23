@@ -1,0 +1,50 @@
+{
+  "login": "Login",
+  "forgot-password": "Password dimenticata",
+  "noAccount": "Non hai un account?",
+  "register": "Registrati",
+  "or": "- o -",
+  "continueAsGuest": "Continua come ospite",
+  "missingCredentials": "Devi inserire email e password",
+  "invalidCredentials": "Credenziali errate",
+  "emailNotVerifiedModal": {
+    "title": "Email non verificata!",
+    "message": "Non hai verificato il tuo indirizzo email. Segui le istruzioni nella mail che ti abbiamo inviato per verificarlo.",
+    "notReceived": "Non hai ricevuto l'email?",
+    "resend": "Inviala di nuovo",
+    "notFoundError": "Questa email non risulta registrata nei nostri sistemi",
+    "alreadyVerifiedError": "Questa email è già verificata",
+    "success": "Email inviata con successo!"
+  },
+  "resetPasswordModal": {
+    "title": "Recupera password",
+    "message": "Inserisci la tua email. Ti invieremo una nuova password.",
+    "btn": "Invia nuova password",
+    "missingEmail": "Inserisci la tua email",
+    "notFoundError": "Questa email non risulta registrata nei nostri sistemi",
+    "success": "Email inviata con successo!"
+  },
+  "modalRegister": {
+    "title": "Registrazione",
+    "mandatoryText": "* Campi obbligatori",
+    "phEmail": "Email *",
+    "phPassword": "Password *",
+    "passwordRules": "La password deve avere almeno 8 caratteri",
+    "phConfirmPassword": "Conferma password *",
+    "phName": "Nome *",
+    "phSurname": "Cognome *",
+    "phCity": "Città",
+    "phYearOfBirth": "Anno di nascita (yyyy)",
+    "phGender": "Sesso",
+    "male": "Maschio",
+    "female": "Femmina",
+    "other": "Altro",
+    "termsText": "Cliccando sul bottone accetti i ",
+    "termsLink": "temini & condizioni",
+    "missingInfo": "Compila tutti i campi obbligatori",
+    "passwordMismatch": "Le password non corrispondono",
+    "invalidInfo": "Errore nei dati forniti",
+    "emailInUse": "Indirizzo email già registrato",
+    "success": "Registrazione completata con successo. Segui le istruzioni nella mail che ti è stata inviata per confermare il tuo indirizzo."
+  }
+}
