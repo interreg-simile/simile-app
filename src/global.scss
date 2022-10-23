@@ -24,3 +24,9 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+/* Custom global styles */
+@import 'theme/mixins';
+@import 'theme/shared';
+@import 'theme/markerClusters';
+@import 'theme/animations';

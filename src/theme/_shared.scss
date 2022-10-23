@@ -1,0 +1,117 @@
+@import 'variables';
+@import 'mixins';
+
+p {
+  margin: 0;
+}
+
+.full-size {
+  width: 100%;
+  height: 100%;
+}
+
+.bg-off-white {
+  --background: #{$off-white};
+  background: $off-white;
+}
+
+.custom-container {
+  --padding-top: 16px;
+  --padding-bottom: 16px;
+  --padding-start: 16px;
+  --padding-end: 16px;
+  width: 100%;
+  padding: 16px;
+}
+
+.bold-primary {
+  font-weight: bold;
+  color: var(--ion-color-primary);
+}
+
+.on-page-message {
+  @include flex-display(column, center, center);
+  color: $text-tertiary;
+  padding-top: 32px;
+
+  ion-icon {
+    font-size: 32px;
+    padding-bottom: 8px;
+  }
+
+  p {
+    font-size: $font-title-lg;
+  }
+}
+
+/* Cards */
+.card-header {
+  font-size: $font-body-small;
+  color: $text-card-header;
+  text-transform: uppercase;
+  padding-bottom: 16px;
+}
+
+ion-card {
+  background: #fff !important;
+
+  ion-card-subtitle.ios {
+    margin: 0;
+  }
+
+  ion-card-content {
+    &.card-content-md {
+      font-size: $font-body;
+
+      p {
+        font-size: $font-body;
+        margin: 0;
+      }
+    }
+  }
+}
+
+/* Spinner */
+.central-spinner {
+  @include flex-center();
+  width: 100%;
+  height: 100%;
+}
+
+/* Notification dot */
+.notification-dot {
+  width: 10px;
+  height: 10px;
+  border: 1px solid #707070;
+  border-radius: 50%;
+  background: transparent;
+
+  &.active {
+    border: none;
+    background: var(--ion-color-danger);
+  }
+}
+
+/* Modals */
+ion-modal.auto-height {
+  --height: auto;
+
+  .modal-wrapper {
+    width: 90vw;
+    border-radius: 5px;
+
+    .ion-page {
+      position: relative;
+      contain: content;
+      max-height: 90vh;
+
+      .modal-content {
+        overflow: auto;
+      }
+    }
+  }
+}
+
+ion-alert .alert-checkbox-label {
+  white-space: pre-wrap;
+}
