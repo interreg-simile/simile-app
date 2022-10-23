@@ -10,3 +10,6 @@ node_modules
 /platforms
 /plugins
 /www
+
+/src/environments/environment.ts
+/src/environments/environment.prod.ts
