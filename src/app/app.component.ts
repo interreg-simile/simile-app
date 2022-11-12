@@ -4,6 +4,7 @@ import {NGXLogger} from 'ngx-logger';
 
 import {LangService} from './shared/lang.service';
 import {StorageService} from './shared/storage.service';
+import {NetworkService} from './shared/network.service'
 
 export const statusBarColor = '#00515F';
 export const projectEmail = 'interreg-simile@polimi.it';
@@ -19,6 +20,7 @@ export class AppComponent {
     private storageService: StorageService,
     private langService: LangService,
     private logger: NGXLogger,
+    private networkService: NetworkService,
   ) {
     this.initializeApp().then(() => {
       this.logger.info('App initialized!')
@@ -27,6 +29,9 @@ export class AppComponent {
 
   async initializeApp() {
     await this.platform.ready()
+
+    this.networkService.init();
+    this.logger.debug('Network service initialized')
 
     await this.storageService
       .init()

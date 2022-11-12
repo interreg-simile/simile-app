@@ -8,5 +8,25 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="bg-off-white custom-container">
+  <!-- Spinner -->
+  <section *ngIf="isLoading" class="central-spinner">
+    <ion-spinner color="primary"></ion-spinner>
+  </section>
+
+  <!-- Data -->
+  <section *ngIf="!isLoading">
+    <ion-card class="ion-no-margin link" *ngFor="let link of links">
+      <ion-card-content class="ion-no-padding">
+        <ion-item lines="none">
+          <ion-label>
+            <p class="name">{{link.name}}</p>
+            <a (click)="onLinkClick(link.link)" class="ion-no-margin">
+              {{link.link}}
+            </a>
+          </ion-label>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+  </section>
 </ion-content>
