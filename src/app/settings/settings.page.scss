@@ -1,0 +1,30 @@
+section {
+  margin-bottom: 32px;
+
+  &.last {
+    margin-bottom: 24px;
+  }
+}
+
+ion-icon {
+  color: var(--ion-color-primary);
+}
+
+ion-label p {
+  color: #000;
+}
+
+.flex-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .name {
+    flex: 1;
+  }
+
+  .choice {
+    color: var(--ion-color-primary);
+    text-transform: uppercase;
+  }
+}

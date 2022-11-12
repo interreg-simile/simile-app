@@ -1,6 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
+
+    namespace 'com.polimi.simile'
     compileSdkVersion rootProject.ext.compileSdkVersion
     defaultConfig {
         applicationId "com.polimi.simile"

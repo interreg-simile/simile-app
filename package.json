@@ -14,10 +14,9 @@
   "license": "SEE LICENSE IN LICENSE",
   "private": true,
   "scripts": {
-    "ng": "ng",
     "start": "ionic serve",
-    "build": "ng build",
-    "lint": "ng lint"
+    "build": "ionic build",
+    "sync": "ionic cap sync"
   },
   "dependencies": {
     "@angular/common": "^14.0.0",

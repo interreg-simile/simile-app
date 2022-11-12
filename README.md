@@ -99,3 +99,6 @@ A special thanks to the project partners:
 
 ## License
 [Apache License 2.0](https://choosealicense.com/licenses/apache-2.0/) © [SIMILE Project](mailto:interreg-simile@polimi.it)
+
+---
+
