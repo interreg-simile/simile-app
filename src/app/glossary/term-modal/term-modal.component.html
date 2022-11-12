@@ -1,0 +1,28 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-button (click)="closeModal()">
+				<ion-icon name="arrow-back"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+
+		<ion-title>{{ _title }}</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content class="bg-off-white custom-container">
+	<section *ngIf="_hasImages" class="images">
+		<img *ngFor="let url of _imagesUrl; index as i"
+			 [src]="sanitizer.bypassSecurityTrustUrl(url)"
+			 alt="Image"
+			 [className]="i < _imagesUrl.length - 1 ? 'margin' : ''"
+			 (click)="onImgClick(url)" />
+	</section>
+
+	<div [innerHTML]="_text"></div>
+
+	<section *ngIf="_hasSources" class="sources">
+		<p class="card-header">{{ "page-glossary.sources" | translate }}</p>
+		<div [innerHTML]="_sources"></div>
+	</section>
+</ion-content>

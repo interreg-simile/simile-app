@@ -15,10 +15,15 @@ import {LoggerModule, NgxLoggerLevel} from 'ngx-logger'
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import {environment} from '../environments/environment'
+import {PhotoViewerComponent} from './shared/photo-viewer/photo-viewer.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PhotoViewerComponent
+  ],
+  entryComponents: [
+    PhotoViewerComponent
   ],
   imports: [
     BrowserModule,

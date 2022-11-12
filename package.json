@@ -33,7 +33,7 @@
     "@capacitor/ios": "4.4.0",
     "@capacitor/keyboard": "4.0.1",
     "@capacitor/network": "^4.0.1",
-    "@capacitor/status-bar": "4.0.1",
+    "@capacitor/status-bar": "^4.0.1",
     "@ionic/angular": "^6.1.9",
     "@ionic/storage-angular": "^3.0.6",
     "@larscom/ngx-translate-module-loader": "^3.0.6",
