@@ -1,9 +1,12 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
+import {AuthGuard} from './shared/auth.guard';
+
 const routes: Routes = [
   {path: '', redirectTo: '/map', pathMatch: 'full'},
-  {path: 'map', loadChildren: () => import('./map/map.module').then(m => m.MapPageModule)},
+  {path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule)},
+  {path: 'map', canActivate: [AuthGuard], loadChildren: () => import('./map/map.module').then(m => m.MapPageModule)},
   {
     path: 'news',
     children: [

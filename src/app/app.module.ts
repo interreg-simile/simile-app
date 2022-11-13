@@ -17,6 +17,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import {environment} from '../environments/environment'
 import {PhotoViewerComponent} from './shared/photo-viewer/photo-viewer.component';
+import {interceptorProviders} from './shared/interceptors/interceptors';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import {PhotoViewerComponent} from './shared/photo-viewer/photo-viewer.component
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     DatePipe,
-    InAppBrowser
+    InAppBrowser,
+    interceptorProviders
   ],
   bootstrap: [AppComponent],
 })
