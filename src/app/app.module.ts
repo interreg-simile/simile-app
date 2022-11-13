@@ -7,6 +7,7 @@ import localeIt from '@angular/common/locales/it';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import {IonicStorageModule} from '@ionic/storage-angular'
+import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
 
 import {IModuleTranslationOptions, ModuleTranslateLoader} from '@larscom/ngx-translate-module-loader'
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core'
@@ -48,6 +49,7 @@ import {PhotoViewerComponent} from './shared/photo-viewer/photo-viewer.component
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     DatePipe,
+    InAppBrowser
   ],
   bootstrap: [AppComponent],
 })
