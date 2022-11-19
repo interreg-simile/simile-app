@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true" />
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">http://192.168.1.111:8000</domain>
+        <domain includeSubdomains="true">http://131.175.56.116:8001</domain>
+    </domain-config>
+</network-security-config>

@@ -72,7 +72,7 @@ export class NewsPage implements OnInit, OnDestroy {
 
     Promise.all([pEvents, pAlerts])
       .catch((err) => {
-        this.logger.error('Error refreshing the page.', err);
+        this.logger.error('Error refreshing the page.', JSON.stringify(err));
         this.toastService.presentToast('page-news.fetch-error', Duration.short);
       })
       .finally(() => e.target.complete());
