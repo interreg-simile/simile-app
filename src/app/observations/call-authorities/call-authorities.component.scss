@@ -1,0 +1,29 @@
+@import '../../../theme/variables';
+
+.container {
+  padding: 16px 16px 6px;
+
+  .link {
+    text-align: center;
+  }
+
+  .code {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--ion-color-primary);
+    text-align: center;
+  }
+
+  .close {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+
+    span {
+      font-size: 14px;
+      color: $text-secondary;
+      text-transform: uppercase;
+      padding: 12px;
+    }
+  }
+}

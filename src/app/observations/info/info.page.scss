@@ -1,0 +1,162 @@
+@import '../../../theme/variables';
+@import '../shared';
+
+$section-space: 32px;
+$sub-section-space: 16px;
+
+$photo-thumb-height: 120px;
+
+.section-space {
+  margin-bottom: $section-space;
+}
+
+.sub-section-space {
+  margin-bottom: $sub-section-space;
+}
+
+#measures {
+  section {
+    margin-bottom: 0;
+  }
+}
+
+.fauna-category {
+  margin-bottom: 18px;
+}
+
+.date {
+  font-style: italic;
+  color: $text-tertiary;
+  text-align: end;
+}
+
+.photos {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  margin-top: 8px;
+
+  .photo-container {
+    display: flex;
+    overflow: hidden;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    height: $photo-thumb-height;
+    border: 1px solid $color-border;
+    border-radius: 5px;
+
+    img {
+      min-width: 100%;
+      min-height: 100%;
+    }
+  }
+}
+
+ion-card {
+  ion-card-header {
+    display: flex;
+    align-items: center;
+    padding: 0 4px 0 16px;
+
+    ion-card-subtitle {
+      text-transform: uppercase;
+      flex: 1;
+    }
+
+    i {
+      padding: 12px;
+      transition: all 0.2s ease-in-out;
+    }
+  }
+
+  ion-card-content {
+    .sub-header {
+      font-style: italic;
+      margin-bottom: 4px;
+    }
+
+    .row {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+
+    .prop-name {
+      color: var(--ion-color-primary);
+      margin-right: 6px;
+    }
+
+    .link {
+      text-decoration: underline;
+    }
+
+    .instrument-header {
+      text-transform: uppercase;
+      margin: 10px 0 4px;
+    }
+
+    .grid {
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-start;
+      width: 100%;
+
+      .col {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 45%;
+
+        .head {
+          color: var(--ion-color-primary);
+        }
+      }
+    }
+  }
+
+  &.open {
+    i {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.skeleton {
+  ion-skeleton-text {
+    --border-radius: 5px;
+  }
+
+  .ske-end {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .ske-center {
+    display: flex;
+    justify-content: center;
+  }
+
+  .ske-date {
+    width: 45%;
+  }
+
+  .ske-photos {
+    line-height: $photo-thumb-height;
+    width: 90%;
+  }
+
+  .ske-header {
+    line-height: 14px;
+    width: 40%;
+  }
+
+  .ske-card {
+    line-height: 48px;
+  }
+
+  .ske-card-xl {
+    line-height: 250px;
+  }
+}

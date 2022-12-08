@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-        <string>simile</string>
+	<string>simile</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -21,6 +21,18 @@
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>LSSupportsOpeningDocumentsInPlace</key>
+	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>You can take photos of your observations.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>We use your location to let you insert observations at your current position.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>We use your location to let you insert observations at your current position.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>You can choose photos for your observations.</string>
+	<key>UIFileSharingEnabled</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

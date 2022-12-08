@@ -1,0 +1,21 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-button (click)="closeModal()">
+				<ion-icon name="arrow-back"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+
+		<ion-title>{{ "helps." + _id + ".title" | translate }}</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content class="bg-off-white custom-container">
+	<img *ngIf="_hasImage"
+		 class="ion-margin-bottom"
+		 [src]="sanitizer.bypassSecurityTrustUrl(_src)"
+		 alt="Help image"
+		 (click)="onImgClick(_src)" />
+
+	<div [innerHTML]="_text"></div>
+</ion-content>

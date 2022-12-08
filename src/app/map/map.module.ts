@@ -1,20 +1,23 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { IonicModule } from '@ionic/angular';
-import { FormsModule } from '@angular/forms';
-import { MapPage } from './map.page';
-import {RouterModule, Routes} from '@angular/router'
-import {TranslateModule} from '@ngx-translate/core'
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {Routes, RouterModule} from '@angular/router';
+import {IonicModule} from '@ionic/angular';
+import {TranslateModule} from '@ngx-translate/core';
+
+import {MapPage} from './map.page';
+import {LegendComponent} from './legend/legend.component';
 
 const routes: Routes = [{path: '', component: MapPage}];
 
 @NgModule({
+  entryComponents: [LegendComponent],
   imports: [
     CommonModule,
     IonicModule,
     RouterModule.forChild(routes),
-    TranslateModule.forChild()
+    TranslateModule.forChild(),
   ],
-  declarations: [MapPage]
+  declarations: [MapPage, LegendComponent],
 })
-export class MapPageModule {}
+export class MapPageModule {
+}

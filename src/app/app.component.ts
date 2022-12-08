@@ -15,6 +15,7 @@ import {NetworkService} from './shared/network.service'
 import {Duration, ToastService} from './shared/toast.service'
 import {Router} from '@angular/router'
 import {StatusBar} from '@capacitor/status-bar'
+import {FileService} from "./shared/file.service";
 
 export const statusBarColor = '#00515F';
 export const projectEmail = 'interreg-simile@polimi.it';
@@ -42,9 +43,11 @@ export class AppComponent {
     private alertCtr: AlertController,
     private toastService: ToastService,
     private router: Router,
+    private fileService: FileService,
   ) {
     this.initializeApp().then(() => {
-      this.logger.info('App initialized!')
+      this.onBackButton();
+      this.logger.debug('App initialized')
     });
   }
 
@@ -62,7 +65,10 @@ export class AppComponent {
       .init()
       .catch(err => this.logger.error('Error initializing storage', err))
 
-    // TODO: init file service
+    await this.fileService
+      .createImageDir()
+      .catch(err => this.logger.error('Error initializing the images directory', err));
+    this.logger.debug('Images directory initialized')
 
     await this.langService
       .initAppLanguage()

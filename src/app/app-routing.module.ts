@@ -8,6 +8,14 @@ const routes: Routes = [
   {path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule)},
   {path: 'map', canActivate: [AuthGuard], loadChildren: () => import('./map/map.module').then(m => m.MapPageModule)},
   {
+    path: 'observations',
+    children: [
+      {path: '', redirectTo: '/observations/new', pathMatch: 'full'},
+      {path: 'new', loadChildren: () => import('./observations/new-observation/new-observation.module').then(m => m.NewObservationPageModule)},
+      {path: ':id', loadChildren: () => import('./observations/info/info.module').then(m => m.InfoPageModule)},
+    ],
+  },
+  {
     path: 'news',
     children: [
       {path: '', loadChildren: () => import('./news/news.module').then(m => m.NewsPageModule)},

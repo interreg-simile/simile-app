@@ -7,7 +7,11 @@ import localeIt from '@angular/common/locales/it';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import {IonicStorageModule} from '@ionic/storage-angular'
-import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
+import {InAppBrowser} from '@awesome-cordova-plugins/in-app-browser/ngx';
+import {Geolocation} from '@awesome-cordova-plugins/geolocation/ngx';
+import {Diagnostic} from '@awesome-cordova-plugins/diagnostic/ngx';
+import {Camera} from '@awesome-cordova-plugins/camera/ngx';
+import {File} from '@awesome-cordova-plugins/file/ngx';
 
 import {IModuleTranslationOptions, ModuleTranslateLoader} from '@larscom/ngx-translate-module-loader'
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core'
@@ -18,14 +22,20 @@ import { AppRoutingModule } from './app-routing.module';
 import {environment} from '../environments/environment'
 import {PhotoViewerComponent} from './shared/photo-viewer/photo-viewer.component';
 import {interceptorProviders} from './shared/interceptors/interceptors';
+import {HelpPopoverComponent} from "./shared/helps/help-popover/help-popover.component";
+import {HelpModalComponent} from "./shared/helps/help-modal/help-modal.component";
 
 @NgModule({
   declarations: [
     AppComponent,
-    PhotoViewerComponent
+    PhotoViewerComponent,
+    HelpModalComponent,
+    HelpPopoverComponent
   ],
   entryComponents: [
-    PhotoViewerComponent
+    PhotoViewerComponent,
+    HelpModalComponent,
+    HelpPopoverComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +61,11 @@ import {interceptorProviders} from './shared/interceptors/interceptors';
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     DatePipe,
     InAppBrowser,
-    interceptorProviders
+    interceptorProviders,
+    Geolocation,
+    Diagnostic,
+    Camera,
+    File
   ],
   bootstrap: [AppComponent],
 })

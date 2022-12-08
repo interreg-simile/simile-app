@@ -1,0 +1,21 @@
+@import '../../shared';
+
+$indent: 16px;
+
+.custom-container {
+  --padding-top: 24px;
+}
+
+.sub-property {
+  color: #000;
+  margin: 8px 16px 0;
+}
+
+.deceased-number {
+  display: flex;
+  align-items: center;
+
+  p {
+    margin-right: 16px;
+  }
+}
