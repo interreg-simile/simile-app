@@ -8,13 +8,15 @@ import {
   PopoverController
 } from '@ionic/angular'
 import {NGXLogger} from 'ngx-logger';
+import {Router} from '@angular/router'
+
+import {StatusBar} from '@capacitor/status-bar'
+import {SplashScreen} from '@capacitor/splash-screen'
 
 import {LangService} from './shared/lang.service';
 import {StorageService} from './shared/storage.service';
 import {NetworkService} from './shared/network.service'
 import {Duration, ToastService} from './shared/toast.service'
-import {Router} from '@angular/router'
-import {StatusBar} from '@capacitor/status-bar'
 import {FileService} from "./shared/file.service";
 
 export const statusBarColor = '#00515F';
@@ -47,6 +49,7 @@ export class AppComponent {
   ) {
     this.initializeApp().then(() => {
       this.onBackButton();
+      SplashScreen.hide()
       this.logger.debug('App initialized')
     });
   }
