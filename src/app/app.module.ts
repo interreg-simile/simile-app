@@ -97,3 +97,14 @@ export function translateLoader(http: HttpClient): ModuleTranslateLoader {
 
   return new ModuleTranslateLoader(http, opts)
 }
+
+// @see: https://github.com/ionic-team/capacitor/issues/1564
+export class HackedFileReader extends window.FileReader {
+  constructor() {
+    super()
+    const zoneOriginalInstance = (this as any)['__zone_symbol__originalInstance']
+    return zoneOriginalInstance || this
+  }
+}
+
+window.FileReader = HackedFileReader
