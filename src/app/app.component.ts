@@ -48,7 +48,9 @@ export class AppComponent {
     private fileService: FileService,
   ) {
     this.initializeApp().then(() => {
-      this.onBackButton();
+      this.onBackButton()
+      document.body.setAttribute('data-theme', 'light')
+      document.body.classList.toggle('dark', false)
       SplashScreen.hide()
       this.logger.debug('App initialized')
     });
