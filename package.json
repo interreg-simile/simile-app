@@ -15,7 +15,7 @@
   "private": true,
   "scripts": {
     "start": "ionic serve",
-    "build": "ionic build",
+    "build": "ionic cap build",
     "sync": "ionic cap sync"
   },
   "dependencies": {
