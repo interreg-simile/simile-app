@@ -24,12 +24,24 @@
 	<true/>
 	<key>LSSupportsOpeningDocumentsInPlace</key>
 	<true/>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>This access is not used by the App but only referenced bu a third-party library</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>This access is not used by the App but only referenced bu a third-party library</string>
 	<key>NSCameraUsageDescription</key>
 	<string>You can take photos of your observations.</string>
+	<key>NSContactsUsageDescription</key>
+	<string>This access is not used by the App but only referenced bu a third-party library</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>This access is not used by the App but only referenced bu a third-party library</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>We use your location to let you insert observations at your current position.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>We use your location to let you insert observations at your current position.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>This access is not used by the App but only referenced bu a third-party library</string>
+	<key>NSMotionUsageDescription</key>
+	<string>This access is not used by the App but only referenced bu a third-party library</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>You can choose photos for your observations.</string>
 	<key>UIFileSharingEnabled</key>
